@@ -7,3 +7,7 @@ before_install:
 
 install:
   - gem install jekyll nokogiri
+
+before_script:
+  - cd test
+  - jekyll build
