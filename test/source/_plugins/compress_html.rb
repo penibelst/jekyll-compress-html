@@ -1,1 +1,1 @@
-../../compress_html.rb
+../../../compress_html.rb
