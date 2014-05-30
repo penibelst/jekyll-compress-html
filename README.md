@@ -1,4 +1,4 @@
-jekyll-compress-html
+Compress HTML in Jekyll
 ====================
 
 [![Build Status](https://travis-ci.org/penibelst/jekyll-compress-html.svg?branch=master)](https://travis-ci.org/penibelst/jekyll-compress-html)
