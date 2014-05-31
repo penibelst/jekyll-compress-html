@@ -11,12 +11,10 @@ Input:
 
 ```html
 {{ '<ul> <li>One</li>  <li>Two</li>   <li>Three</li></ul>' | compress_html }}
-
 ```
 
 Output:
 
 ```html
 <ul><li>One</li><li>Two</li><li>Three</li></ul>
-
 ```
