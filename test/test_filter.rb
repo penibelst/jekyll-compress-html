@@ -1,7 +1,7 @@
-require 'minitest/autorun'
+require 'test/unit'
 
 
-class TestFilter < Minitest::Test
+class TestFilter < Test::Unit::TestCase
   # Helpers
   def file_content(file, directory)
     path = File.join('test', directory, file)
