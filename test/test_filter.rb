@@ -17,6 +17,10 @@ class TestFilter < Test::Unit::TestCase
     assert_file 'empty.html'
   end
 
+  def test_empty_nodes
+    assert_file 'empty_nodes.html'
+  end
+
   def test_strip
     assert_file 'strip.html'
   end
