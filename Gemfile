@@ -4,5 +4,6 @@ gem 'nokogiri'
 
 group :test do
   gem 'jekyll'
+  gem 'rake'
   gem 'shoulda'
 end
