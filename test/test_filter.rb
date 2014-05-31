@@ -3,7 +3,7 @@ require 'minitest/unit'
 require 'shoulda'
 
 
-class TestFilter < MiniTest::Unit::TestCase
+class TestFilter < Minitest::Test
   def file_content(file, directory)
     path = File.join('test', directory, file)
     File.new(path).read.rstrip
