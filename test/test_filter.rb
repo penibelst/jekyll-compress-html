@@ -1,7 +1,9 @@
-require 'test/unit'
+require 'minitest/autorun'
+require 'minitest/unit'
 require 'shoulda'
 
-class TestFilter < Test::Unit::TestCase
+
+class TestFilter < MiniTest::Unit::TestCase
   def file_content(file, directory)
     path = File.join('test', directory, file)
     File.new(path).read.rstrip
