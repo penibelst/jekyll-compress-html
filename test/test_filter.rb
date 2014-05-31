@@ -1,9 +1,8 @@
 require 'minitest/autorun'
-require 'minitest/unit'
-require 'shoulda'
 
 
 class TestFilter < Minitest::Test
+  # Helpers
   def file_content(file, directory)
     path = File.join('test', directory, file)
     File.new(path).read.rstrip
@@ -14,7 +13,7 @@ class TestFilter < Minitest::Test
   end
 
   def filtered_content(file)
-    file_content(file, '_site')
+    file_content(file, 'filtered')
   end
 
   def assert_file(file)
@@ -23,10 +22,9 @@ class TestFilter < Minitest::Test
     assert_equal(expected, filtered)
   end
 
-  context 'Empty' do
-    should 'render empty file to empty' do
-      assert_file 'empty.html'
-    end
+  # Tests
+  def test_empty
+    assert_file 'empty.html'
   end
 
 end
