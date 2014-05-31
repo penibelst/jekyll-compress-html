@@ -1,5 +1,4 @@
 require 'minitest/autorun'
-require 'minitest/unit'
 
 
 class TestFilter < Minitest::Test
