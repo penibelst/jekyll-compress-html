@@ -18,7 +18,7 @@ module Jekyll
 
   private
 
-    BLOCK_TAGS = 'div, li, meta, ol, p, ul'
+    BLOCK_TAGS = 'div, h1, h2, h3, h4, h5, h6, li, meta, ol, p, ul'
 
   end
 end
