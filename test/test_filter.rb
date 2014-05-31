@@ -13,16 +13,10 @@ class TestFilter < Test::Unit::TestCase
   end
 
   # Tests
-  def test_empty
-    assert_file 'empty.html'
-  end
-
-  def test_empty_nodes
-    assert_file 'empty_nodes.html'
-  end
-
-  def test_strip
-    assert_file 'strip.html'
+  def test_filtered
+    Dir.glob("test/expected/*.html") do |path|
+      assert_file File.basename(path)
+    end
   end
 
 end
