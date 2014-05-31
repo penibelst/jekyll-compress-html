@@ -8,17 +8,17 @@ class TestFilter < Test::Unit::TestCase
   end
 
   def expected_content(file)
-    file_content(file, 'expectation')
+    file_content(file, 'expected')
   end
 
-  def rendered_content(file)
+  def filtered_content(file)
     file_content(file, '_site')
   end
 
   def assert_file(file)
-    rendered = rendered_content(file)
+    filtered = filtered_content(file)
     expected = expected_content(file)
-    assert_equal(expected, rendered)
+    assert_equal(expected, filtered)
   end
 
   context 'Empty' do
