@@ -1,6 +1,5 @@
 require 'minitest/autorun'
 require 'minitest/unit'
-require 'shoulda'
 
 
 class TestFilter < Minitest::Test
@@ -23,8 +22,8 @@ class TestFilter < Minitest::Test
     assert_equal(expected, filtered)
   end
 
-  context 'Empty' do
-    should 'render empty file to empty' do
+  describe 'Empty' do
+    it 'render empty file to empty' do
       assert_file 'empty.html'
     end
   end
