@@ -8,7 +8,3 @@ notifications:
 #build
 before_install:
   - export NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-
-before_script:
-  - cd test
-  - jekyll build
