@@ -8,18 +8,8 @@ class TestFilter < Minitest::Test
     File.new(path).read.rstrip
   end
 
-  def expected_content(file)
-    file_content(file, 'expected')
-  end
-
-  def filtered_content(file)
-    file_content(file, 'filtered')
-  end
-
   def assert_file(file)
-    filtered = filtered_content(file)
-    expected = expected_content(file)
-    assert_equal(expected, filtered)
+    assert_equal file_content(file, 'expected'), file_content(file, 'filtered')
   end
 
   # Tests
