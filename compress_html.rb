@@ -6,8 +6,8 @@ module Jekyll
   module CompressHTMLFilter
 
     def compress_html(input)
-      doc = Nokogiri::HTML(input)
-      doc.inner_html
+      doc = Nokogiri::HTML::DocumentFragment.parse(input)
+      doc.to_html.strip
     end
 
   end
