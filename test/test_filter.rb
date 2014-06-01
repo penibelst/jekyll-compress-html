@@ -9,7 +9,7 @@ class TestFilter < Test::Unit::TestCase
   end
 
   def assert_file(file)
-    assert_equal file_content(file, 'expected'), file_content(file, 'filtered')
+    assert_equal file_content(file, 'expected'), file_content(file, 'filtered'), file
   end
 
   # Tests
