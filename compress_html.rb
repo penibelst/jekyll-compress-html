@@ -11,7 +11,7 @@ module Jekyll
 
   private
 
-    BLOCK_TAGS = 'div, h1, h2, h3, h4, h5, h6, li, meta, ol, p, ul'
+    BLOCK_ELEMENTS = 'div, h1, h2, h3, h4, h5, h6, li, meta, ol, p, ul'
 
     def compress(input)
       doc = Nokogiri::HTML::DocumentFragment.parse(input) { |config|
@@ -21,7 +21,7 @@ module Jekyll
 
       remove_comments(doc)
 
-      doc.search(BLOCK_TAGS).each { |node|
+      doc.search(BLOCK_ELEMENTS).each { |node|
         remove_empty_siblings(node)
       }
 
