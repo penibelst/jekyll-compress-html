@@ -30,7 +30,7 @@ module Jekyll
 
     def remove_empty_siblings(node)
       [node.previous_sibling, node.next_sibling, node].each { |n|
-        n.unlink if !n.nil? && n.text.strip.empty?
+        n.unlink if !n.nil? && n.content.strip.empty?
       }
     end
 
