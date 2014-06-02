@@ -20,23 +20,26 @@ module Jekyll
       }
 
       remove_comments(doc)
-
-      doc.search(BLOCK_ELEMENTS).each { |node|
-        remove_empty_siblings(node)
-      }
+      remove_empty_block_elements(doc)
 
       doc.to_html(:save_with => Nokogiri::XML::Node::SaveOptions::AS_HTML).strip
     end
 
     def remove_empty_siblings(node)
       [node.previous_sibling, node.next_sibling, node].each { |n|
-        n.unlink if !n.nil? && n.content.strip.empty?
+        n.remove if !n.nil? && n.content.strip.empty?
       }
     end
 
     def remove_comments(doc)
       doc.traverse { |node|
         node.remove if node.comment? && node.content !~ /\A(\[if|\<\!\[endif)/
+      }
+    end
+
+    def remove_empty_block_elements(doc)
+      doc.search(BLOCK_ELEMENTS).each { |node|
+        remove_empty_siblings(node)
       }
     end
 
