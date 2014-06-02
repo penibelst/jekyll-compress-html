@@ -18,7 +18,7 @@ Download the file `compress.html` and copy it to your `_layouts`.
 
 ## Usage
 
-Reference the layout inside your highest-level layout. For example in `_layouts/default.html`:
+Reference the `compress` layout inside your highest-level layout. For example in `_layouts/default.html`:
 
 ```html
 ---
@@ -37,8 +37,9 @@ Take a look in [test/source](test/source) and [test/expected](test/expected) dir
 
 ## Reasons
 
-The main reason for that layout is to get rid of whitespaces. Size reduction is a welcome gain.
+The main reason for that layout is to get rid of whitespaces. Check out *[Fighting the Space Between Inline Block Elements][3]* for better understanding. Size reduction is a welcome gain.
 
 [0]: http://jekyllrb.com/
 [1]: http://www.w3.org/TR/html5/
 [2]: http://docs.shopify.com/themes/liquid-basics
+[3]: css-tricks.com/fighting-the-space-between-inline-block-elements/
