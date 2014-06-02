@@ -33,7 +33,7 @@ Now all your markup will be processed by the `compress` layout.
 
 ## Coverage
 
-Take a look in [test/sorce](test/sorce) and [test/expected](test/expected) directories. They contain self-explanatory specifications.
+Take a look in [](test/source) and [](test/expected) directories. They contain self-explanatory specifications.
 
 ## Reasons
 
