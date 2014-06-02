@@ -4,7 +4,3 @@ rvm:
   - 2.1
 notifications:
   email: false
-
-#build
-before_install:
-  - export NOKOGIRI_USE_SYSTEM_LIBRARIES=true
