@@ -19,6 +19,8 @@ module Jekyll
         config.noerror.strict.noent
       }
 
+      remove_comments(doc)
+
       doc.search(BLOCK_TAGS).each { |node|
         remove_empty_siblings(node)
       }
@@ -29,6 +31,12 @@ module Jekyll
     def remove_empty_siblings(node)
       [node.previous_sibling, node.next_sibling, node].each { |n|
         n.unlink if !n.nil? && n.text.strip.empty?
+      }
+    end
+
+    def remove_comments(doc)
+      doc.traverse { |node|
+        node.remove if node.comment? && node.content !~ /\A(\[if|\<\!\[endif)/
       }
     end
 
