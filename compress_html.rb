@@ -12,7 +12,29 @@ module Jekyll
   private
 
     # https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements
-    BLOCK_ELEMENTS = %w(div h1 h2 h3 h4 h5 h6 li meta ol p ul)
+    BLOCK_ELEMENTS = %w(
+      address
+      article
+      aside
+      audio
+      blockquote
+      dd
+      div
+      dl
+      dt
+      figcaption
+      figure
+      form
+      footer
+      h1 h2 h3 h4 h5 h6
+      hr
+      li
+      ol
+      p
+      pre
+      section
+      table
+      ul)
 
     def compress(input)
       doc = Nokogiri::HTML::DocumentFragment.parse(input) { |config|
