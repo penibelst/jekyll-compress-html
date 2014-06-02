@@ -6,9 +6,9 @@ Compress HTML in Jekyll
 A [Jekyll][0] layout that compresses [HTML][1] in pure [Liquid][2]. At a glance:
 
 * preserves `<pre>`
-* remove whitespaces between block-level elements
-* squeeze whitespaces
-* remove empty elements
+* removes whitespaces between block-level elements
+* squeezes whitespaces
+* removes empty elements
 
 Works on Github Pages, because no plugins required.
 
@@ -33,7 +33,7 @@ Now all your markup will be processed by the `compress` layout.
 
 ## Coverage
 
-Take a look in [test/sorce][] and [test/expected][] directories. They contain self-explanatory specifications.
+Take a look in [test/sorce](test/sorce) and [test/expected](test/expected) directories. They contain self-explanatory specifications.
 
 ## Reasons
 
