@@ -11,7 +11,8 @@ module Jekyll
 
   private
 
-    BLOCK_ELEMENTS = 'div, h1, h2, h3, h4, h5, h6, li, meta, ol, p, ul'
+    # https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements
+    BLOCK_ELEMENTS = %w(div h1 h2 h3 h4 h5 h6 li meta ol p ul)
 
     def compress(input)
       doc = Nokogiri::HTML::DocumentFragment.parse(input) { |config|
@@ -38,7 +39,7 @@ module Jekyll
     end
 
     def remove_empty_block_elements(doc)
-      doc.search(BLOCK_ELEMENTS).each { |node|
+      doc.search(BLOCK_ELEMENTS.join(',')).each { |node|
         remove_empty_siblings(node)
       }
     end
