@@ -3,18 +3,18 @@ Compress HTML in Jekyll
 
 [![Build Status](https://travis-ci.org/penibelst/jekyll-compress-html.svg?branch=master)](https://travis-ci.org/penibelst/jekyll-compress-html)
 
-A [Jekyll][0] layout that compresses [HTML][1] in pure [Liquid][2]. At a glance:
+A [Jekyll][0] layout that compresses [HTML][1]. At a glance:
 
-* preserves `<pre>`
 * removes whitespaces between block-level elements
 * squeezes whitespaces
 * removes empty elements
+* preserves `<pre>`
 
-Works on Github Pages, because no plugins required.
+Works on Github Pages, because no plugins required. The layout is written in pure [Liquid][2].
 
 ## Installation
 
-Download the file `compress.html` and copy it to your `_layouts`.
+Download the [latest release][4]. Extract `compress.html` and copy it to your `_layouts`.
 
 ## Usage
 
@@ -43,3 +43,4 @@ The main reason for that layout is to get rid of whitespaces. Check out *[Fighti
 [1]: http://www.w3.org/TR/html5/
 [2]: http://docs.shopify.com/themes/liquid-basics
 [3]: http://css-tricks.com/fighting-the-space-between-inline-block-elements/
+[4]: https://github.com/penibelst/jekyll-compress-html/releases/latest
