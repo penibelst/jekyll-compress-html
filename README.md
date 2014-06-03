@@ -33,6 +33,11 @@ Now all your markup will be processed by the `compress` layout.
 
 ## Coverage
 
+Jekyll versions:
+
+* 1.x.x
+* 2.x.x
+
 Take a look in [test/source](test/source) and [test/expected](test/expected) directories. They contain self-explanatory specifications. Run `rake` to test the layout.
 
 ## Reasons

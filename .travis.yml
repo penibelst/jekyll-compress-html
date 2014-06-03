@@ -1,6 +1,8 @@
-# environment
 language: ruby
 rvm:
   - 2.1
+env:
+  - JEKYLL_VERSION=1.0
+  - JEKYLL_VERSION=2.0
 notifications:
   email: false
