@@ -1,6 +1,0 @@
-source 'https://rubygems.org'
-
-group :test do
-  gem 'rake'
-  gem 'jekyll', '~>1.0'
-end
