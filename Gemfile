@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
-jekyll_version = ENV['JEKYLL_VERSION'] ? "~>#{ENV['JEKYLL_VERSION']}" : nil
-gem 'jekyll', jekyll_version
+gem 'jekyll', ENV['JEKYLL_VERSION'] ? "~>#{ENV['JEKYLL_VERSION']}" : nil
 
 group :test do
   gem 'rake'
