@@ -1,7 +1,7 @@
 language: ruby
 rvm:
   - 2.1
-gemfiles:
+gemfile:
   - test/jekyll_1.gemfile
   - test/jekyll_2.gemfile
 notifications:
