@@ -2,5 +2,5 @@ source 'https://rubygems.org'
 
 group :test do
   gem 'rake'
-  gem 'jekyll', '~>1.0'
+  gem 'jekyll', '~>2.0'
 end
