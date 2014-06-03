@@ -1,11 +1,11 @@
 ---
 compress:
   elements:
-    - "div"
-    - "li"
-    - "table"
-    - "td"
-    - "tr"
+    - div
+    - li
+    - table
+    - td
+    - tr
 ---
 
 {% assign pres = content | split: '<pre' %}{% for pre1 in pres %}{% assign pre2 = pre1 | split: '</pre>' %}{% if pre2.size == 2 %}<pre{{ pre2.first }}</pre>{% endif %}{% assign second = pre2.last | split: ' ' | join: ' ' %}{% for element in page.compress.elements %}{% assign intertag = ' <e,<e' | replace: 'e', element | split: ',' %}{% assign second = second | replace: intertag[0], intertag[1] %}{% assign intertag = ' </e,</e' | replace: 'e', element | split: ',' %}{% assign second = second | replace: intertag[0], intertag[1] %}{% assign intertag = '<e></e>' | replace: 'e', element %}{% assign second = second | remove: intertag %}{% assign intertag = '<e> </e>' | replace: 'e', element %}{% assign second = second | remove: intertag %}{% endfor %}{{ second }}{% endfor %}
