@@ -37,7 +37,7 @@ Take a look in [test/source](test/source) and [test/expected](test/expected) dir
 
 ## Reasons
 
-The main reason for that layout is to get rid of whitespaces. Check out *[Fighting the Space Between Inline Block Elements][3]* for better understanding. Size reduction is a welcome gain.
+The main reason for that layout is to get rid of whitespaces. Check out *[Fighting the Space Between Inline Block Elements][3]* for better understanding of the topic. Size reduction is a welcome gain.
 
 [0]: http://jekyllrb.com/
 [1]: http://www.w3.org/TR/html5/
