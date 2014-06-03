@@ -1,6 +1,8 @@
-# environment
 language: ruby
 rvm:
   - 2.1
+gemfiles:
+  - test/jekyll_1.gemfile
+  - test/jekyll_2.gemfile
 notifications:
   email: false
