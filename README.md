@@ -42,4 +42,4 @@ The main reason for that layout is to get rid of whitespaces. Check out *[Fighti
 [0]: http://jekyllrb.com/
 [1]: http://www.w3.org/TR/html5/
 [2]: http://docs.shopify.com/themes/liquid-basics
-[3]: css-tricks.com/fighting-the-space-between-inline-block-elements/
+[3]: http://css-tricks.com/fighting-the-space-between-inline-block-elements/
