@@ -5,8 +5,8 @@ Compress HTML in Jekyll
 
 A [Jekyll][0] layout that compresses [HTML][1]. At a glance:
 
-* removes whitespaces between block-level elements;
-* squeezes whitespaces;
+* stripes whitespace between block-level elements;
+* squeezes whitespace;
 * removes empty elements;
 * preserves `<pre>`.
 
@@ -38,11 +38,12 @@ Jekyll versions:
 * 1.x.x
 * 2.x.x
 
-Block-level elements:
+Stripped elements:
 
-* [Sections][5],
-* [Grouping content][6] except the `pre` element,
-* [Tabular data][7].
+* [Metadata content][8]
+* [Sections][5]
+* [Grouping content][6] except the `pre` element
+* [Tabular data][7]
 
 Take a look at *[test/source](test/source)* and *[test/expected](test/expected)* directories. They contain self-explanatory specifications. Run `rake` to test the layout.
 
@@ -58,3 +59,4 @@ The main reason for that layout is to get rid of whitespaces. Check out *[Fighti
 [5]: http://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html
 [6]: http://www.whatwg.org/specs/web-apps/current-work/multipage/grouping-content.html
 [7]: http://www.whatwg.org/specs/web-apps/current-work/multipage/tabular-data.html
+[8]: http://www.whatwg.org/specs/web-apps/current-work/multipage/semantics.html
