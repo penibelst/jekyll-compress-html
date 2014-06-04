@@ -5,10 +5,10 @@ Compress HTML in Jekyll
 
 A [Jekyll][0] layout that compresses [HTML][1]. At a glance:
 
-* removes whitespaces between block-level elements
-* squeezes whitespaces
-* removes empty elements
-* preserves `<pre>`
+* removes whitespaces between block-level elements;
+* squeezes whitespaces;
+* removes empty elements;
+* preserves `<pre>`.
 
 Works on Github Pages, because no plugins required. The layout is written in pure [Liquid][2].
 
@@ -38,6 +38,11 @@ Jekyll versions:
 * 1.x.x
 * 2.x.x
 
+Block-level elements:
+
+* [Sections][5],
+* [Grouping content][6] except the `pre` element.
+
 Take a look at *[test/source](test/source)* and *[test/expected](test/expected)* directories. They contain self-explanatory specifications. Run `rake` to test the layout.
 
 ## Reasons
@@ -49,3 +54,5 @@ The main reason for that layout is to get rid of whitespaces. Check out *[Fighti
 [2]: http://docs.shopify.com/themes/liquid-basics
 [3]: http://css-tricks.com/fighting-the-space-between-inline-block-elements/
 [4]: https://github.com/penibelst/jekyll-compress-html/releases/latest
+[5]: http://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html
+[6]: http://www.whatwg.org/specs/web-apps/current-work/multipage/grouping-content.html
