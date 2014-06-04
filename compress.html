@@ -36,6 +36,17 @@ compress:
     - figcaption
     - main
     - div
+    # Tabular data
+    - table
+    - caption
+    - colgroup
+    - col
+    - tbody
+    - thead
+    - tfoot
+    - tr
+    - td
+    - th
 ---
 
 {% assign _pres = content | split: '<pre' %}{% for _pre1 in _pres %}{% assign _pre2 = _pre1 | split: '</pre>' %}{% if _pre2.size == 2 %}<pre{{ _pre2.first }}</pre>{% endif %}{% assign _second = _pre2.last | split: ' ' | join: ' ' %}{% for _element in page.compress.elements %}{% assign _edge = ' <e,<e' | replace: 'e', _element | split: ',' %}{% assign _second = _second | replace: _edge[0], _edge[1] %}{% assign _edge = ' </e,</e' | replace: 'e', _element | split: ',' %}{% assign _second = _second | replace: _edge[0], _edge[1] %}{% assign _blank = '<e></e>' | replace: 'e', _element %}{% assign _second = _second | remove: _blank %}{% assign _blank = '<e> </e>' | replace: 'e', _element %}{% assign _second = _second | remove: _blank %}{% endfor %}{{ _second }}{% endfor %}

@@ -41,7 +41,8 @@ Jekyll versions:
 Block-level elements:
 
 * [Sections][5],
-* [Grouping content][6] except the `pre` element.
+* [Grouping content][6] except the `pre` element,
+* [Tabular data][7].
 
 Take a look at *[test/source](test/source)* and *[test/expected](test/expected)* directories. They contain self-explanatory specifications. Run `rake` to test the layout.
 
@@ -56,3 +57,4 @@ The main reason for that layout is to get rid of whitespaces. Check out *[Fighti
 [4]: https://github.com/penibelst/jekyll-compress-html/releases/latest
 [5]: http://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html
 [6]: http://www.whatwg.org/specs/web-apps/current-work/multipage/grouping-content.html
+[7]: http://www.whatwg.org/specs/web-apps/current-work/multipage/tabular-data.html
