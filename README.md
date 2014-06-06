@@ -38,13 +38,15 @@ Jekyll versions:
 * 1.x.x
 * 2.x.x
 
-Stripped elements:
+Whitespaces are stripped around elements:
 
 * [Metadata content][8]
 * [Comments][8]
 * [Sections][5]
 * [Grouping content][6] except the `pre` element
 * [Tabular data][7]
+
+[Optional end tags][9] are removed.
 
 Take a look at *[test/source](test/source)* and *[test/expected](test/expected)* directories. They contain self-explanatory specifications. Run `rake` to test the layout.
 
@@ -61,3 +63,4 @@ The main reason for that layout is to get rid of whitespaces. Check out *[Fighti
 [6]: http://www.whatwg.org/specs/web-apps/current-work/multipage/grouping-content.html
 [7]: http://www.whatwg.org/specs/web-apps/current-work/multipage/tabular-data.html
 [8]: http://www.whatwg.org/specs/web-apps/current-work/multipage/semantics.html
+[9]: http://www.whatwg.org/specs/web-apps/current-work/multipage/syntax.html#optional-tags
