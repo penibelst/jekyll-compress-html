@@ -41,6 +41,7 @@ Jekyll versions:
 Stripped elements:
 
 * [Metadata content][8]
+* [Comments][8]
 * [Sections][5]
 * [Grouping content][6] except the `pre` element
 * [Tabular data][7]
