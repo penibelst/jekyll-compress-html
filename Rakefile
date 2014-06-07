@@ -15,3 +15,8 @@ end
 
 task :default => [:test]
 
+task :performance do
+  Dir.chdir('performance') do
+    sh 'time jekyll build'
+  end
+end
