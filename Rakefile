@@ -16,7 +16,10 @@ end
 task :default => [:test]
 
 task :performance do
+  require 'benchmark'
   Dir.chdir('performance') do
-    sh 'time jekyll build'
+    puts Benchmark.measure{
+      sh 'jekyll build'
+    }
   end
 end
