@@ -48,7 +48,7 @@ Whitespaces are stripped around elements:
 
 [Optional end tags][9] are removed.
 
-Take a look at *[test/source](test/source)* and *[test/expected](test/expected)* directories. They contain self-explanatory specifications. Run `rake` to test the layout.
+Take a look at project’s `test/source` and `test/expected` directories. They contain self-explanatory specifications. Run `rake` to test the layout.
 
 ## Reasons
 
