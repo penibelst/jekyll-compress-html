@@ -6,3 +6,5 @@ env:
   - JEKYLL_VERSION=2.0
 notifications:
   email: false
+after_success:
+  - bundle exec rake performance
