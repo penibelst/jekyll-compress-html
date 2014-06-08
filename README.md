@@ -52,6 +52,10 @@ Whitespaces are stripped around elements:
 
 Take a look at project’s `test/source` and `test/expected` directories. They contain self-explanatory specifications. Run `rake` to test the layout.
 
+## Examples
+
+Look how people [use the layout on Github][10].
+
 [0]: http://jekyllrb.com/
 [1]: http://www.w3.org/TR/html5/
 [2]: http://docs.shopify.com/themes/liquid-basics
@@ -62,3 +66,4 @@ Take a look at project’s `test/source` and `test/expected` directories. They c
 [7]: http://www.whatwg.org/specs/web-apps/current-work/multipage/tabular-data.html
 [8]: http://www.whatwg.org/specs/web-apps/current-work/multipage/semantics.html
 [9]: http://www.whatwg.org/specs/web-apps/current-work/multipage/syntax.html
+[10]: /search?q=%27jekyll-compress-html%27+path%3A_layouts&type=Code
