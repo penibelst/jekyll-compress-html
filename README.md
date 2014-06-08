@@ -12,6 +12,8 @@ A [Jekyll][0] layout that compresses [HTML][1]. At a glance:
 
 Works on Github Pages, because no plugins required. The layout is written in pure [Liquid][2].
 
+The main reason for that layout is to get rid of whitespaces. Check out *[Fighting the Space Between Inline Block Elements][3]* for better understanding of the topic. Size reduction is a welcome gain.
+
 ## Installation
 
 Download the [latest release][4]. Extract `compress.html` and copy it to your `_layouts`.
@@ -49,10 +51,6 @@ Whitespaces are stripped around elements:
 [Optional end tags][9] are removed.
 
 Take a look at project’s `test/source` and `test/expected` directories. They contain self-explanatory specifications. Run `rake` to test the layout.
-
-## Reasons
-
-The main reason for that layout is to get rid of whitespaces. Check out *[Fighting the Space Between Inline Block Elements][3]* for better understanding of the topic. Size reduction is a welcome gain.
 
 [0]: http://jekyllrb.com/
 [1]: http://www.w3.org/TR/html5/
