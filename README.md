@@ -12,7 +12,7 @@ A [Jekyll][0] layout that compresses [HTML][1]. At a glance:
 
 Works on Github Pages, because no plugins required. The layout is written in pure [Liquid][2].
 
-The main reason for that layout is to get rid of whitespaces. Check out *[Fighting the Space Between Inline Block Elements][3]* for better understanding of the topic. Size reduction is a welcome gain.
+The main reason for the compression is to [fight the space between inline block elements][3]. Size reduction is a welcome gain.
 
 ## Installation
 
