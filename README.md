@@ -66,4 +66,4 @@ Look how people [use the layout on Github][10].
 [7]: http://www.whatwg.org/specs/web-apps/current-work/multipage/tabular-data.html
 [8]: http://www.whatwg.org/specs/web-apps/current-work/multipage/semantics.html
 [9]: http://www.whatwg.org/specs/web-apps/current-work/multipage/syntax.html
-[10]: /search?q=%27jekyll-compress-html%27+path%3A_layouts&type=Code
+[10]: https://github.com/search?q=%27jekyll-compress-html%27+path%3A_layouts&type=Code
