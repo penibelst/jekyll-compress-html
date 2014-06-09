@@ -33,10 +33,6 @@ layout: compress
 
 Now all your markup will be processed by the `compress` layout.
 
-## Configuration
-
-
-
 ## Coverage
 
 Jekyll versions:
