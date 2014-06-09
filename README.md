@@ -33,6 +33,10 @@ layout: compress
 
 Now all your markup will be processed by the `compress` layout.
 
+## Configuration
+
+
+
 ## Coverage
 
 Jekyll versions:
@@ -51,6 +55,11 @@ Whitespaces are stripped around elements:
 [Optional end tags][9] are removed.
 
 Take a look at project’s `test/source` and `test/expected` directories. They contain self-explanatory specifications. Run `rake` to test the layout.
+
+## Restrictions :warning:
+
+* Whitespaces inside of the `textarea` element are squeezed. Please don’t use the layout on pages with non-empty `textarea`.
+* Inline JS can become broken where `//` comments used. Please remove the comments or change to `/* */` style.
 
 ## Examples
 
