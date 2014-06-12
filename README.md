@@ -16,9 +16,11 @@ The main reason for the compression is to [fight the space between inline block 
 
 ## Installation
 
-Download the [latest release][4]. Extract `compress.html` and copy it to your `_layouts`.
+### 1. Download
 
-## Usage
+Get the [latest release][4]. Extract `compress.html` and copy it to your `_layouts`.
+
+### 2. Declaration
 
 Reference the `compress` layout inside your highest-level layout. For example in `_layouts/default.html`:
 
@@ -33,14 +35,19 @@ layout: compress
 
 Now all your markup will be processed by the `compress` layout.
 
-## Coverage
+### 3. Configuration
 
-Jekyll versions:
+The layout setting go in the `compress_html` variable inside the `_config.yml` file:
 
-* 1.x.x
-* 2.x.x
+```yaml
+compress_html:
+  collapses: []
+  omissions: []
+```
 
-Whitespaces are stripped around elements:
+#### `collapses`
+
+An array of elements to strip whitespace between them. The following elements are a good choice to collapse:
 
 * [Metadata content][8]
 * [Comments][9]
@@ -48,7 +55,24 @@ Whitespaces are stripped around elements:
 * [Grouping content][6] except the `pre` element
 * [Tabular data][7]
 
-[Optional end tags][9] are removed.
+#### `omissions`
+
+An array of elements with [optional end tags][9].
+
+#### Sample
+
+```yaml
+compress_html:
+  collapses: [div]
+  omissions: [p, li]
+```
+
+## Testing
+
+Jekyll versions:
+
+* 1.x.x
+* 2.x.x
 
 Take a look at project’s `test/source` and `test/expected` directories. They contain self-explanatory specifications. Run `rake` to test the layout.
 
