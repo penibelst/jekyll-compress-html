@@ -41,13 +41,13 @@ The layout setting go in the `compress_html` variable inside the `_config.yml` f
 
 ```yaml
 compress_html:
-  collapses: []
-  omissions: []
+  clippings: []
+  endings: []
 ```
 
-#### `collapses`
+#### `clippings`
 
-An array of elements to strip whitespace between them. The following elements are a good choice to collapse:
+An array of elements to clip whitespace around them. The following elements may be safe to clip:
 
 * [Metadata content][8]
 * [Comments][9]
@@ -55,7 +55,7 @@ An array of elements to strip whitespace between them. The following elements ar
 * [Grouping content][6] except the `pre` element
 * [Tabular data][7]
 
-#### `omissions`
+#### `endings`
 
 An array of elements with [optional end tags][9].
 
@@ -63,8 +63,8 @@ An array of elements with [optional end tags][9].
 
 ```yaml
 compress_html:
-  collapses: [div]
-  omissions: [p, li]
+  clippings: [div]
+  endings: [p, li]
 ```
 
 ## Testing
