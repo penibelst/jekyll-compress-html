@@ -26,9 +26,9 @@ layout: compress
 <html>
 {{ content }}
 </html>
-    ```
+```
 
-    Now all your markup will be processed by the `compress` layout.
+Now all your markup will be processed by the `compress` layout.
 
 ## Configuration
 
