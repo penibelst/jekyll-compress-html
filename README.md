@@ -50,7 +50,6 @@ compress_html:
 An array of elements to clip whitespace around them. The following elements may be safe to clip:
 
 * [Metadata content][8]
-* [Comments][9]
 * [Sections][5]
 * [Grouping content][6] except the `pre` element
 * [Tabular data][7]
