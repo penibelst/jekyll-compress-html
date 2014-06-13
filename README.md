@@ -49,21 +49,21 @@ compress_html:
 
 An array of elements to clip whitespace around them. The following elements may be safe to clip:
 
-* [Metadata content][8]
-* [Sections][5]
-* [Grouping content][6] except the `pre` element
-* [Tabular data][7]
+* [Metadata content][8];
+* [Sections][5];
+* [Grouping content][6] except the `pre` element;
+* [Tabular data][7].
 
 #### `endings`
 
 An array of elements with [optional end tags][9].
 
-#### Sample
+#### Full-blown sample
 
 ```yaml
 compress_html:
-  clippings: [div]
-  endings: [p, li]
+  clippings: [html, head, title, base, link, meta, style, body, article, section, nav, aside, h1, h2, h3, h4, h5, h6, hgroup, header, footer, address, p, hr, blockquote, ol, ul, li, dl, dt, dd, figure, figcaption, main, div, table, caption, colgroup, col, tbody, thead, tfoot, tr, td, th]
+  endings: [html, head, body, li, dt, dd, p, rt, rp, optgroup, option, colgroup, caption, thead, tbody, tfoot, tr, td, th]
 ```
 
 ## Testing
