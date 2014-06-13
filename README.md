@@ -37,7 +37,7 @@ Now all your markup will be processed by the `compress` layout.
 
 ### 3. Configuration
 
-The layout settings go in the `compress_html` variable inside the `_config.yml` file:
+By default the layout replaces contiguous whitespace with a single whitespace character. Additional settings can be specified in the `compress_html` key inside the `_config.yml` file:
 
 ```yaml
 compress_html:
