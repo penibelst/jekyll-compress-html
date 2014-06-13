@@ -16,26 +16,21 @@ The main reason for the compression is to [fight the space between inline block 
 
 ## Installation
 
-### 1. Download
+1. Get the [latest release][4]. Extract `compress.html` and copy it to your `_layouts`.
+1. Reference the `compress` layout inside your highest-level layout. For example in `_layouts/default.html`:
 
-Get the [latest release][4]. Extract `compress.html` and copy it to your `_layouts`.
-
-### 2. Declaration
-
-Reference the `compress` layout inside your highest-level layout. For example in `_layouts/default.html`:
-
-```html
+   ```html
 ---
 layout: compress
 ---
 <html>
 {{ content }}
 </html>
-```
+    ```
 
-Now all your markup will be processed by the `compress` layout.
+    Now all your markup will be processed by the `compress` layout.
 
-### 3. Configuration
+## Configuration
 
 By default the layout replaces contiguous whitespace with a single whitespace character. Additional settings can be specified in the `compress_html` key inside the `_config.yml` file:
 
@@ -45,7 +40,7 @@ compress_html:
   endings: []
 ```
 
-#### `clippings`
+### `clippings`
 
 An array of elements to clip whitespace around them. The following elements may be safe to clip:
 
@@ -54,11 +49,11 @@ An array of elements to clip whitespace around them. The following elements may 
 * [Grouping content][6] except the `pre` element;
 * [Tabular data][7].
 
-#### `endings`
+### `endings`
 
 An array of elements with [optional end tags][9].
 
-#### Full-blown sample
+### Full-blown sample
 
 ```yaml
 compress_html:
