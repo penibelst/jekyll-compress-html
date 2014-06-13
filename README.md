@@ -37,7 +37,7 @@ Now all your markup will be processed by the `compress` layout.
 
 ### 3. Configuration
 
-The layout setting go in the `compress_html` variable inside the `_config.yml` file:
+The layout settings go in the `compress_html` variable inside the `_config.yml` file:
 
 ```yaml
 compress_html:
