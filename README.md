@@ -68,7 +68,7 @@ compress_html:
 
 ## Testing
 
-Jekyll versions:
+Compatible Jekyll versions are:
 
 * 1.x.x
 * 2.x.x
