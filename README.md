@@ -79,6 +79,7 @@ Take a look at project’s `test/source` and `test/expected` directories. They c
 
 * Whitespaces inside of the `textarea` element are squeezed. Please don’t use the layout on pages with non-empty `textarea`.
 * Inline JS can become broken where `//` comments used. Please remove the comments or change to `/**/` style.
+* Invalid markup can lead to unexpected results. Please make sure your markup is valid before.
 
 ## Examples
 
