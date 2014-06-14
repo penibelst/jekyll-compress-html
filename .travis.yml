@@ -4,5 +4,7 @@ rvm:
 env:
   - JEKYLL_VERSION=1.0
   - JEKYLL_VERSION=2.0
+after_success:
+  - rake performance
 notifications:
   email: false

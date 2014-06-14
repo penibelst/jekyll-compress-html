@@ -1,2 +1,5 @@
 source: source
 destination: compressed
+compress_html:
+  clippings: [div]
+  endings: [li, dt, dd, p, thead, tbody, tr, td, th]
