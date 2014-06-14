@@ -5,11 +5,12 @@ Compress HTML in Jekyll
 
 A [Jekyll][0] layout that compresses [HTML][1]. At a glance:
 
-* removes unnecessary whitespace (configurable);
-* removes optional end tags (configurable);
+* removes unnecessary whitespace;
+* removes optional end tags;
 * preserves whitespace within `<pre>`;
-* works on Github Pages;
-* is automatically tested.
+* Github Pages compatible;
+* configurable affected elements;
+* automatically tested.
 
 The layout is written in pure [Liquid][2], no plugins are required.
 
