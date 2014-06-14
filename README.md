@@ -5,19 +5,20 @@ Compress HTML in Jekyll
 
 A [Jekyll][0] layout that compresses [HTML][1]. At a glance:
 
-* stripes whitespace between block-level elements;
-* squeezes whitespace;
-* removes empty elements;
-* preserves `<pre>`.
+* removes unnecessary whitespace (configurable);
+* removes optional end tags (configurable);
+* preserves whitespace within `<pre>`;
+* works on Github Pages;
+* is automatically tested.
 
-Works on Github Pages, because no plugins required. The layout is written in pure [Liquid][2].
+The layout is written in pure [Liquid][2], no plugins are required.
 
-The main reason for the compression is to [fight the space between inline block elements][3]. Size reduction is a welcome gain.
+The main reason for the compression is to [fight the space between inline block elements][3]. File size reduction is a welcome gain.
 
 ## Installation
 
 1. Get the [latest release][4]. Extract `compress.html` and copy it to your `_layouts`.
-1. Reference the `compress` layout inside your highest-level layout. For example in `_layouts/default.html`:
+1. Reference the `compress` layout in your highest-level layout. For example in `_layouts/default.html`:
 
    ```html
 ---
