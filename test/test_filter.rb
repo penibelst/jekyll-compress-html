@@ -1,7 +1,8 @@
-require 'test/unit'
+require 'minitest'
+require 'minitest/autorun'
 
 
-class TestCompressed < Test::Unit::TestCase
+class TestCompressed < Minitest::Test
   # Helpers
   def file_content(file, directory)
     path = File.join('test', directory, file)
