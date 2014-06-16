@@ -4,6 +4,12 @@ require 'minitest/autorun'
 
 class TestCompressed < Minitest::Test
 
+  def setup
+    Dir.glob(File.join(COMPRESSED, '**', '*.html')) do |path|
+      File.delete(path) if !File.directory?(path)
+    end
+  end
+
   def test_default
     jekyll_build(['_config.yml'])
     assert_dir('default')
