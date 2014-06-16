@@ -1,0 +1,2 @@
+compress_html:
+  clippings: [p, ul, li, div]
