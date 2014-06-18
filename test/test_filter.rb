@@ -25,6 +25,11 @@ class TestCompressed < Minitest::Test
     assert_dir('clippings')
   end
 
+  def test_endings
+    jekyll_build(['_config.yml', '_config_endings.yml'])
+    assert_dir('endings')
+  end
+
   private
 
   EXPECTED = 'test/expected'
