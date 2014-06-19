@@ -25,7 +25,7 @@ All options activated. File sizes in bytes. As of June 2014.
 | [Bootstrap CSS][11] | 249762 | 232085 |
 | [IIIF Image][14] | 61150 | 52732 |
 | [Jekyll News][12] | 45358 | 40251 |
-| [Motherfucking][13] | 5200 | 4519 |
+| [Mother&shy;fucking][13] | 5200 | 4519 |
 | [Performance Culture][15] | 20715 | 19986 |
 
 ## Installation
