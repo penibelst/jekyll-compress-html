@@ -16,6 +16,18 @@ The layout is written in pure [Liquid][2], no plugins are required.
 
 The main reason for the compression is to [fight the space between inline block elements][3]. File size reduction is a welcome gain.
 
+## Results
+
+All options activated. File sizes in bytes. As of June 2014.
+
+| Site | Original | Compressed |
+| :--- | -------: | ---------: |
+| [Bootstrap CSS][11] | 249762 | 232085 |
+| [IIIF Image][14] | 61150 | 52732 |
+| [Jekyll News][12] | 45358 | 40251 |
+| [Motherfucking][13] | 5200 | 4519 |
+| [Performance Culture][15] | 20715 | 19986 |
+
 ## Installation
 
 1. Get the [latest release][4]. Extract `compress.html` and copy it to your `_layouts`.
@@ -93,3 +105,8 @@ Look how people [use the layout on Github][10].
 [8]: http://www.whatwg.org/specs/web-apps/current-work/multipage/semantics.html
 [9]: http://www.whatwg.org/specs/web-apps/current-work/multipage/syntax.html
 [10]: https://github.com/search?l=html&q=%27jekyll-compress-html%27+path%3A_layouts
+[11]: http://getbootstrap.com/css/
+[12]: http://jekyllrb.com/news/
+[13]: http://motherfuckingwebsite.com/
+[14]: http://iiif.io/api/image/2.0/
+[15]: http://calendar.perfplanet.com/2012/creating-a-performance-culture/
