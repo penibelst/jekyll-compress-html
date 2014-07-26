@@ -4,6 +4,8 @@ rvm:
 env:
   - JEKYLL_VERSION=1.0
   - JEKYLL_VERSION=2.0
+before_script:
+  - jekyll --version
 after_success:
   - rake performance
 notifications:
