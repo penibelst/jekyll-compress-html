@@ -9,7 +9,7 @@ task :build do
   File.open('_layouts/compress.html', 'w') do |b|
     b.puts File.open('src/compress.yaml').read
     b.puts
-    b.puts File.open('src/compress.liquid').read.split(' ').join(' ').gsub('} {', '}{')
+    b.puts File.open('src/compress.liquid').read.gsub(/\s+(?={)/, '')
   end
 end
 
