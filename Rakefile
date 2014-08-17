@@ -6,10 +6,10 @@ task :test => [:build]
 
 task :build do
   mkdir_p '_layouts'
-  File.open('_layouts/compress.html', 'w') do |b|
-    b.puts File.open('src/compress.yaml').read
-    b.puts
-    b.puts File.open('src/compress.liquid').read.gsub(/\s+(?={)/, '')
+  File.open('_layouts/compress.html', File::CREAT|File::WRONLY) do |f|
+    f.puts File.open('src/compress.yaml').read
+    f.puts
+    f.puts File.open('src/compress.liquid').read.gsub(/\s+(?={)/, '')
   end
 end
 
