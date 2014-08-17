@@ -5,12 +5,11 @@ task :default => [:test]
 task :test => [:build]
 
 task :build do
+  yaml = File.open('src/compress.yaml').read
+  liquid = File.open('src/compress.liquid').read.gsub(/\s+(?={)/, '')
+
   mkdir_p '_layouts'
-  File.open('_layouts/compress.html', File::WRONLY) do |b|
-    b.puts File.open('src/compress.yaml').read
-    b.puts
-    b.puts File.open('src/compress.liquid').read.gsub(/\s+(?={)/, '')
-  end
+  File.open('_layouts/compress.html', File::CREAT|File::WRONLY).write "#{yaml}\n#{liquid}"
 end
 
 Rake::TestTask.new(:test) do |t|
