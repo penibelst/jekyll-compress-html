@@ -5,7 +5,7 @@ task :default => [:test]
 task :test => [:build]
 
 task :build do
-  FileUtils.mkdir_p '_layouts'
+  mkdir_p '_layouts'
   File.open('_layouts/compress.html', 'w') do |b|
     b.puts File.open('src/compress.yaml').read
     b.puts
