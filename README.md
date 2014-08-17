@@ -104,7 +104,7 @@ Look how people [use the layout on Github][10].
 [7]: http://www.whatwg.org/specs/web-apps/current-work/multipage/tabular-data.html
 [8]: http://www.whatwg.org/specs/web-apps/current-work/multipage/semantics.html
 [9]: http://www.whatwg.org/specs/web-apps/current-work/multipage/syntax.html
-[10]: https://github.com/search?l=html&q=%27jekyll-compress-html%27+path%3A_layouts
+[10]: https://github.com/search?l=html&o=desc&q=%27jekyll-compress-html%27+path%3A_layouts&s=indexed&type=Code
 [11]: http://getbootstrap.com/css/
 [12]: http://jekyllrb.com/news/
 [13]: http://motherfuckingwebsite.com/
