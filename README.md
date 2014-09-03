@@ -92,7 +92,7 @@ Take a look at project’s `test/source` and `test/expected` directories. They c
 
 ## Examples
 
-Look how people [use the layout on Github][10].
+Look how people [use the layout on GitHub][10].
 
 [0]: http://jekyllrb.com/
 [1]: http://www.w3.org/TR/html5/
