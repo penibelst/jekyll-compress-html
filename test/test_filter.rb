@@ -30,6 +30,11 @@ class TestCompressed < Minitest::Test
     assert_dir('endings')
   end
 
+  def test_comments
+    jekyll_build(['_config.yml', '_config_comments.yml'])
+    assert_dir('comments')
+  end
+
   private
 
   EXPECTED = 'test/expected'
