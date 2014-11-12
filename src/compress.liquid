@@ -1,4 +1,15 @@
-{% assign _pres = content | split: '<pre' %}
+{% assign _content = content %}
+
+{% if site.compress_html.comments.size == 2 %}
+  {% assign _comments = _content | split: site.compress_html.comments.first %}
+  {% assign _content = '' %}
+  {% for _comment1 in _comments %}
+    {% assign _comment2 = _comment1 | split: site.compress_html.comments.last %}
+    {% assign _content = _content | append: _comment2.last %}
+  {% endfor %}
+{% endif %}
+
+{% assign _pres = _content | split: '<pre' %}
 
 {% for _pre1 in _pres %}
 

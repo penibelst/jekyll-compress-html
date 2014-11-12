@@ -33,7 +33,7 @@ All options activated. File sizes in bytes. As of June 2014.
 1. Get the [latest release][4]. Extract `compress.html` and copy it to your `_layouts`.
 1. Reference the `compress` layout in your highest-level layout. For example in `_layouts/default.html`:
 
-   ```html
+  ```html
 ---
 layout: compress
 ---
@@ -51,6 +51,7 @@ By default the layout replaces contiguous whitespace with a single whitespace ch
 ```yaml
 compress_html:
   clippings: []
+  comments: []
   endings: []
 ```
 
@@ -63,6 +64,17 @@ An array of elements to clip whitespace around them. The following elements may 
 * [Grouping content][6] except the `pre` element;
 * [Tabular data][7].
 
+### `comments`
+
+An array of exactly two comment tags to strip comments enclosed by them. The first string must be the start tag, the second must be the end tag. Example:
+
+  ```yaml
+compress_html:
+  comments: ["<!-- ", " -->"]
+```
+
+Whitespaces around the tags prevent [conditional comments][cond] from being deleted.
+
 ### `endings`
 
 An array of elements with [optional end tags][9].
@@ -71,7 +83,8 @@ An array of elements with [optional end tags][9].
 
 ```yaml
 compress_html:
-  clippings: [html, head, title, base, link, meta, style, body, article, section, nav, aside, h1, h2, h3, h4, h5, h6, hgroup, header, footer, address, p, hr, blockquote, ol, ul, li, dl, dt, dd, figure, figcaption, main, div, table, caption, colgroup, col, tbody, thead, tfoot, tr, td, th]
+  clippings: [html, head, title, base, link, meta, style, body, article, section, nav, aside, h1, h2, h3, h4, h5, h6, hgroup, header, footer, address, p, hr, blockquote, ol, ul, li, dl, dt, dd, figure, figcaption, main, div, table, caption, colgroup, col, tbody, thead, tfoot, tr, td, th
+  comments: ["<!-- ", " -->"]
   endings: [html, head, body, li, dt, dd, p, rt, rp, optgroup, option, colgroup, caption, thead, tbody, tfoot, tr, td, th]
 ```
 
@@ -110,3 +123,4 @@ Look how people [use the layout on GitHub][10].
 [13]: http://motherfuckingwebsite.com/
 [14]: http://iiif.io/api/image/2.0/
 [15]: http://calendar.perfplanet.com/2012/creating-a-performance-culture/
+[cond]: http://msdn.microsoft.com/en-us/library/ms537512.aspx
