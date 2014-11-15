@@ -1,7 +1,6 @@
 require "minitest"
 require "minitest/autorun"
 
-
 class TestCompressed < Minitest::Test
 
   def setup
