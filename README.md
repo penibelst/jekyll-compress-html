@@ -110,12 +110,12 @@ Look how people [use the layout on GitHub][10].
 
 [0]: http://jekyllrb.com/
 [1]: http://www.w3.org/TR/html5/
-[2]: http://docs.shopify.com/themes/liquid-basics
+[2]: http://docs.shopify.com/themes/liquid-documentation/basics
 [3]: http://css-tricks.com/fighting-the-space-between-inline-block-elements/
 [4]: https://github.com/penibelst/jekyll-compress-html/releases/latest
 [5]: https://html.spec.whatwg.org/multipage/sections.html
-[6]: https://html.spec.whatwg.org/multipage/grouping-content.html
-[7]: https://html.spec.whatwg.org/multipage/tabular-data.html
+[6]: https://html.spec.whatwg.org/multipage/semantics.html#grouping-content
+[7]: https://html.spec.whatwg.org/multipage/tables.html#tables
 [8]: https://html.spec.whatwg.org/multipage/semantics.html
 [9]: https://html.spec.whatwg.org/multipage/syntax.html
 [10]: https://github.com/search?l=html&o=desc&q=%27jekyll-compress-html%27+path%3A_layouts&s=indexed&type=Code
