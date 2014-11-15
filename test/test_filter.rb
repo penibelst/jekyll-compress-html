@@ -5,7 +5,7 @@ class TestCompressed < Minitest::Test
 
   def setup
     Dir.glob(File.join(COMPRESSED, "**", "*.html")) do |path|
-      File.delete(path) if !File.directory?(path)
+      File.delete(path) if File.file?(path)
     end
   end
 
