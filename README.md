@@ -7,6 +7,7 @@ A [Jekyll][0] layout that compresses [HTML][1]. At a glance:
 
 * removes unnecessary whitespace;
 * removes optional end tags;
+* removes comments;
 * preserves whitespace within `<pre>`;
 * GitHub Pages compatible;
 * configurable affected elements;
