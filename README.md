@@ -60,10 +60,10 @@ compress_html:
 
 An array of elements to clip whitespace around them. The following elements may be safe to clip:
 
-* [Metadata content][8];
-* [Sections][5];
-* [Grouping content][6] except the `pre` element;
-* [Tabular data][7].
+* [Metadata content][html-semantics];
+* [Sections][html-semantics];
+* [Grouping content][html-semantics] except the `pre` element;
+* [Tabular data][html-tabular].
 
 ### `comments`
 
@@ -78,7 +78,7 @@ Whitespaces around the tags prevent [conditional comments][cond] from being dele
 
 ### `endings`
 
-An array of elements with [optional end tags][9].
+An array of elements with [optional end tags][html-syntax].
 
 ### Full-blown sample
 
@@ -113,11 +113,9 @@ Look how people [use the layout on GitHub][10].
 [2]: http://docs.shopify.com/themes/liquid-documentation/basics
 [3]: http://css-tricks.com/fighting-the-space-between-inline-block-elements/
 [4]: https://github.com/penibelst/jekyll-compress-html/releases/latest
-[5]: https://html.spec.whatwg.org/multipage/sections.html
-[6]: https://html.spec.whatwg.org/multipage/semantics.html#grouping-content
-[7]: https://html.spec.whatwg.org/multipage/tables.html#tables
-[8]: https://html.spec.whatwg.org/multipage/semantics.html
-[9]: https://html.spec.whatwg.org/multipage/syntax.html
+[html-semantics]: https://html.spec.whatwg.org/multipage/semantics.html
+[html-syntax]: https://html.spec.whatwg.org/multipage/syntax.html
+[html-tabular]: https://html.spec.whatwg.org/multipage/tables.html
 [10]: https://github.com/search?l=html&o=desc&q=%27jekyll-compress-html%27+path%3A_layouts&s=indexed&type=Code
 [11]: http://getbootstrap.com/css/
 [12]: http://jekyllrb.com/news/
