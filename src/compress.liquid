@@ -1,7 +1,7 @@
 {% assign _content = content %}
 
 {% for _element in site.compress_html.endings %}
-  {% capture _end %}</{{ _element }}>{% endcapture %}
+  {% assign _end = "</element>" | replace: "element", _element %}
   {% assign _content = _content | remove: _end %}
 {% endfor %}
 
