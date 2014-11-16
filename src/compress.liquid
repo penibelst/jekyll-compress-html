@@ -1,5 +1,10 @@
 {% assign _content = content %}
 
+{% for _element in site.compress_html.endings %}
+  {% capture _end %}</{{ _element }}>{% endcapture %}
+  {% assign _content = _content | remove: _end %}
+{% endfor %}
+
 {% if site.compress_html.comments.size == 2 %}
   {% assign _new = "" %}
   {% assign _comment_befores = _content | split: site.compress_html.comments.first %}
@@ -17,11 +22,6 @@
   {% assign _pre2 = _pre1 | split: "</pre>" %}
   {% if _pre2.size == 2 %}<pre{{ _pre2.first }}</pre>{% endif %}
   {% assign _second = _pre2.last %}
-
-  {% for _element in site.compress_html.endings %}
-    {% assign _closing = "</element>" | replace: "element", _element %}
-    {% assign _second = _second | remove: _closing %}
-  {% endfor %}
 
   {% assign _second = _second | split: " " | join: " " %}
 
