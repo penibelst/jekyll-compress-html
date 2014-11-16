@@ -1,7 +1,7 @@
 {% assign _content = content %}
 
 {% for _element in site.compress_html.endings %}
-  {% assign _end = "</element>" | replace: "element", _element %}
+  {% assign _end = _element | prepend: "</" | append: ">" %}
   {% assign _content = _content | remove: _end %}
 {% endfor %}
 
@@ -15,25 +15,27 @@
   {% assign _content = _new %}
 {% endif %}
 
-{% assign _pres = _content | split: "<pre" %}
+{% assign _new = "" %}
+{% assign _pre_befores = _content | split: "<pre" %}
+{% for _pre_before in _pre_befores %}
+  {% assign _pres = _pre_before | split: "</pre>" %}
+  {% if _pres.size == 2 %}
+    {% assign _new = _new | append: "<pre" | append: _pres.first | append: "</pre>" %}
+  {% endif %}
+  {% assign _compressed = _pres.last | split: " " | join: " " %}
+  {% assign _new = _new | append: _compressed %}
+{% endfor %}
+{% assign _content = _new %}
 
-{% for _pre1 in _pres %}
-
-  {% assign _pre2 = _pre1 | split: "</pre>" %}
-  {% if _pre2.size == 2 %}<pre{{ _pre2.first }}</pre>{% endif %}
-  {% assign _second = _pre2.last %}
-
-  {% assign _second = _second | split: " " | join: " " %}
-
-  {% for _element in site.compress_html.clippings %}
-    {% assign _edges = " <element,<element; </element>,</element>;</element> ,</element>" | replace: "element", _element | split: ";" %}
-
+{% for _element in site.compress_html.clippings %}
+  {% assign _start = _element | prepend: "<" %}
+  {% if _content contains _start %}
+    {% assign _edges = " <e,<e; </e>,</e>;</e> ,</e>" | replace: "e", _element | split: ";" %}
     {% for _edge in _edges %}
       {% assign _replacement = _edge | split: "," %}
-      {% assign _second = _second | replace: _replacement[0], _replacement[1] %}
+      {% assign _content = _content | replace: _replacement.first, _replacement.last %}
     {% endfor %}
-  {% endfor %}
-
-  {{ _second }}
-
+  {% endif %}
 {% endfor %}
+
+{{ _content }}
