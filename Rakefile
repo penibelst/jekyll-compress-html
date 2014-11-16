@@ -6,8 +6,15 @@ task :test => [:build]
 task :performance => [:build]
 
 task :build do
-  yaml = File.open("src/compress.yaml").read
-  liquid = File.open("src/compress.liquid").read.gsub(/\s+(?={)/, "")
+  yaml = ""
+  File.open "src/compress.yaml" do |f|
+    yaml = f.read
+  end
+
+  liquid = ""
+  File.open "src/compress.liquid" do |f|
+    liquid = f.read.gsub(/\s+(?={)/, "")
+  end
 
   mkdir_p "_layouts"
   File.open "_layouts/compress.html", File::CREAT|File::WRONLY do |f|
