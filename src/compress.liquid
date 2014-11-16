@@ -31,7 +31,7 @@
 
 
 {% comment %}
-             Compress whitespace
+             Compress whitespace outside of <pre>
 {% endcomment %}
 
 {% assign _new = "" %}
@@ -48,7 +48,7 @@
 
 
 {% comment %}
-             Remove trailing whitespace
+             Clip whitespace around elements
 {% endcomment %}
 
 {% for _element in site.compress_html.clippings %}
