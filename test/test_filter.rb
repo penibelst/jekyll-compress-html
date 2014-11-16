@@ -47,7 +47,7 @@ class TestCompressed < Minitest::Test
 
   def jekyll_build(configs)
     Dir.chdir File.dirname(__FILE__) do
-      %x{jekyll build --config #{configs.join(",")}}
+      %x{bundle exec jekyll build --config #{configs.join(",")}}
     end
   end
 end
