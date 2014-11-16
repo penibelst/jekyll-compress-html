@@ -1,9 +1,23 @@
+{% comment %}
+             Input
+{% endcomment %}
+
 {% assign _content = content %}
+
+
+{% comment %}
+             Remove end tags
+{% endcomment %}
 
 {% for _element in site.compress_html.endings %}
   {% assign _end = _element | prepend: "</" | append: ">" %}
   {% assign _content = _content | remove: _end %}
 {% endfor %}
+
+
+{% comment %}
+             Remove comments
+{% endcomment %}
 
 {% if site.compress_html.comments.size == 2 %}
   {% assign _new = "" %}
@@ -14,6 +28,11 @@
   {% endfor %}
   {% assign _content = _new %}
 {% endif %}
+
+
+{% comment %}
+             Compress whitespace
+{% endcomment %}
 
 {% assign _new = "" %}
 {% assign _pre_befores = _content | split: "<pre" %}
@@ -27,6 +46,11 @@
 {% endfor %}
 {% assign _content = _new %}
 
+
+{% comment %}
+             Remove trailing whitespace
+{% endcomment %}
+
 {% for _element in site.compress_html.clippings %}
   {% assign _start = _element | prepend: "<" %}
   {% if _content contains _start %}
@@ -37,5 +61,10 @@
     {% endfor %}
   {% endif %}
 {% endfor %}
+
+
+{% comment %}
+             Output
+{% endcomment %}
 
 {{ _content }}
