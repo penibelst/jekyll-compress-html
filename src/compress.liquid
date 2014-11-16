@@ -1,12 +1,13 @@
 {% assign _content = content %}
 
 {% if site.compress_html.comments.size == 2 %}
-  {% assign _comments = _content | split: site.compress_html.comments.first %}
-  {% assign _content = "" %}
-  {% for _comment1 in _comments %}
-    {% assign _comment2 = _comment1 | split: site.compress_html.comments.last %}
-    {% assign _content = _content | append: _comment2.last %}
+  {% assign _new = "" %}
+  {% assign _comment_befores = _content | split: site.compress_html.comments.first %}
+  {% for _comment_before in _comment_befores %}
+    {% assign _comment_after = _comment_before | split: site.compress_html.comments.last | last %}
+    {% assign _new = _new | append: _comment_after %}
   {% endfor %}
+  {% assign _content = _new %}
 {% endif %}
 
 {% assign _pres = _content | split: "<pre" %}
