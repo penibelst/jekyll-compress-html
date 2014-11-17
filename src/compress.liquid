@@ -1,9 +1,9 @@
-{% comment %}--Input--{% endcomment %}
+{% comment %}Input{% endcomment %}
 
 {% assign _content = content %}
 
 
-{% comment %}--Remove end tags--{% endcomment %}
+{% comment %}Remove end tags{% endcomment %}
 
 {% for _element in site.compress_html.endings %}
   {% assign _end = _element | prepend: "</" | append: ">" %}
@@ -11,7 +11,7 @@
 {% endfor %}
 
 
-{% comment %}--Remove comments--{% endcomment %}
+{% comment %}Remove comments{% endcomment %}
 
 {% if site.compress_html.comments.size == 2 %}
   {% assign _new = "" %}
@@ -24,7 +24,7 @@
 {% endif %}
 
 
-{% comment %}--Compress whitespace outside of <pre>--{% endcomment %}
+{% comment %}Compress whitespace outside of <pre>{% endcomment %}
 
 {% assign _new = "" %}
 {% assign _pre_befores = _content | split: "<pre" %}
@@ -39,7 +39,7 @@
 {% assign _content = _new %}
 
 
-{% comment %}--Clip whitespace around elements--{% endcomment %}
+{% comment %}Clip whitespace around elements{% endcomment %}
 
 {% for _element in site.compress_html.clippings %}
   {% assign _edges = " <e,<e; </e>,</e>;</e> ,</e>" | replace: "e", _element | split: ";" %}
@@ -50,6 +50,6 @@
 {% endfor %}
 
 
-{% comment %}--Output--{% endcomment %}
+{% comment %}Output{% endcomment %}
 
 {{ _content }}
