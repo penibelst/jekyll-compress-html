@@ -52,14 +52,11 @@
 {% endcomment %}
 
 {% for _element in site.compress_html.clippings %}
-  {% assign _start = _element | prepend: "<" %}
-  {% if _content contains _start %}
-    {% assign _edges = " <e,<e; </e>,</e>;</e> ,</e>" | replace: "e", _element | split: ";" %}
-    {% for _edge in _edges %}
-      {% assign _replacement = _edge | split: "," %}
-      {% assign _content = _content | replace: _replacement.first, _replacement.last %}
-    {% endfor %}
-  {% endif %}
+  {% assign _edges = " <e,<e; </e>,</e>;</e> ,</e>" | replace: "e", _element | split: ";" %}
+  {% for _edge in _edges %}
+    {% assign _replacement = _edge | split: "," %}
+    {% assign _content = _content | replace: _replacement.first, _replacement.last %}
+  {% endfor %}
 {% endfor %}
 
 
