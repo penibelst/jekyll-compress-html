@@ -3,7 +3,7 @@ Compress HTML in Jekyll
 
 [![Build Status](https://travis-ci.org/penibelst/jekyll-compress-html.svg?branch=master)](https://travis-ci.org/penibelst/jekyll-compress-html)
 
-A [Jekyll][0] layout that compresses [HTML][1]. At a glance:
+A [Jekyll][0] layout that compresses [HTML][html-spec]. At a glance:
 
 * removes unnecessary whitespace;
 * removes optional end tags;
@@ -109,7 +109,7 @@ Take a look at project’s `test/source` and `test/expected` directories. They c
 Look how people [use the layout on GitHub][10].
 
 [0]: http://jekyllrb.com/
-[1]: http://www.w3.org/TR/html5/
+[html-spec]: https://html.spec.whatwg.org/
 [2]: http://docs.shopify.com/themes/liquid-documentation/basics
 [3]: http://css-tricks.com/fighting-the-space-between-inline-block-elements/
 [4]: https://github.com/penibelst/jekyll-compress-html/releases/latest
