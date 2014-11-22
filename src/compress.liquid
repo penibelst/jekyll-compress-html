@@ -30,15 +30,13 @@
 {% assign _new = "" %}
 {% assign _pre_befores = _content | split: "<pre" %}
 {% for _pre_before in _pre_befores %}
-  {% if _pre_before %}
-    {% assign _pres = _pre_before | split: "</pre>" %}
-    {% if _pres.size > 0 %}
-      {% if _pres.size == 2 %}
-        {% assign _new = _new | append: "<pre" | append: _pres.first | append: "</pre>" %}
-      {% endif %}
-      {% assign _compressed = _pres.last | split: " " | join: " " %}
-      {% assign _new = _new | append: _compressed %}
+  {% assign _pres = _pre_before | split: "</pre>" %}
+  {% if _pres.size > 0 %}
+    {% if _pres.size == 2 %}
+      {% assign _new = _new | append: "<pre" | append: _pres.first | append: "</pre>" %}
     {% endif %}
+    {% assign _compressed = _pres.last | split: " " | join: " " %}
+    {% assign _new = _new | append: _compressed %}
   {% endif %}
 {% endfor %}
 {% assign _content = _new %}
