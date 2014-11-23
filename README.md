@@ -124,7 +124,7 @@ string | delimiter | array.size | array.first | array.last
 "abc"  | "d"       | 1          | "abc"       | "abc"
 "abc"  | ""        | 3          | "a"         | "c"
 ""     | "a"       | 0          | ""          | ""
-"a  c" | " "       | 2          | "a"         | "c"
+`a  c` | " "       | 2          | "a"         | "c"
 
 
 [0]: http://jekyllrb.com/
