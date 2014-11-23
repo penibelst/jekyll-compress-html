@@ -110,8 +110,6 @@ Look how people [use the layout on GitHub][10].
 
 ## Liquid Split Cheat Sheet
 
-The Liquid `split` filter is implemented through the same-titled ruby string method.
-
   ```
 {{ string | split: delimiter }} #=> array
 ```
@@ -123,8 +121,12 @@ string | delimiter | array.size | array.first | array.last
 "abc"  | "c"       | 1          | "ab"        | "ab"
 "abc"  | "d"       | 1          | "abc"       | "abc"
 "abc"  | ""        | 3          | "a"         | "c"
-""     | "a"       | 0          | ""          | ""
-`a  c` | " "       | 2          | "a"         | "c"
+*empty*| `a`       | 0          | ""          | ""
+`a··c` | `·`       | 2          | `a`         | `c`
+
+The interpunct `·` stands for a whitespace.
+
+The Liquid `split` filter is implemented through the same-titled ruby string method.
 
 
 [0]: http://jekyllrb.com/
