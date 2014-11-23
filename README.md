@@ -108,6 +108,25 @@ Take a look at project’s `test/source` and `test/expected` directories. They c
 
 Look how people [use the layout on GitHub][10].
 
+## Liquid Split Cheat Sheet
+
+The Liquid `split` filter is implemented through the same-titled ruby string method.
+
+```
+{{ string | split: delimiter }} # => array
+```
+
+string | delimiter | array.size | array.first | array.last
+:----- | :-------- | :--------- | :---------- | :---------
+`abc`  | `a`       | 2          | ``          | `bc`
+`abc`  | `b`       | 2          | `a`         | `c`
+`abc`  | `c`       | 1          | `ab`        | `ab`
+`abc`  | `d`       | 1          | `abc`       | `abc`
+`abc`  | ``        | 3          | `a`         | `c`
+``     | `a`       | 0          | ``          | ``
+`a  c` | ` `       | 2          | `a`         | `c`
+
+
 [0]: http://jekyllrb.com/
 [html-spec]: https://html.spec.whatwg.org/
 [2]: http://docs.shopify.com/themes/liquid-documentation/basics
