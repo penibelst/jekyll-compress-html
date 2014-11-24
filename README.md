@@ -114,17 +114,15 @@ Look how people [use the layout on GitHub][10].
 {{ string | split: delimiter }} #=> array
 ```
 
-string | delimiter | array.size | array.first | array.last
-:----- | :-------- | :--------- | :---------- | :---------
-`abc`  | `a`       | 2          | *empty*     | `bc`
-`abc`  | `b`       | 2          | `a`         | `c`
-`abc`  | `c`       | 1          | `ab`        | `ab`
-`abc`  | `d`       | 1          | `abc`       | `abc`
-`abc`  | *empty*   | 3          | `a`         | `c`
-*empty*| `a`       | 0          | *empty*     | *empty*
-`a··c` | `·`       | 2          | `a`         | `c`
-
-The interpunct `·` stands for a whitespace.
+string   | delimiter | array.size | array.first | array.last
+:------- | :-------- | :--------- | :---------- | :---------
+`"abc"`  | `"a"`     | 2          | `""`        | `"bc"`
+`"abc"`  | `"b"`     | 2          | `"a"`       | `"c"`
+`"abc"`  | `"c"`     | 1          | `"ab"`      | `"ab"`
+`"abc"`  | `"d"`     | 1          | `"abc"`     | `"abc"`
+`"abc"`  | `""`      | 3          | `"a"`       | `"c"`
+`""`     | `"a"`     | 0          | *nil*       | *nil*
+`"a  c"` | `" "`     | 2          | `"a"`       | `"c"`
 
 The Liquid `split` filter is implemented through the same-titled ruby string method.
 
