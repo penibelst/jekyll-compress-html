@@ -6,7 +6,7 @@
 {% comment %}Remove end tags{% endcomment %}
 
 {% for _element in site.compress_html.endings %}
-  {% assign _end = _element | prepend: "</" | append: ">" %}
+  {% capture _end %}</{{ _element }}>{% endcapture %}
   {% assign _content = _content | remove: _end %}
 {% endfor %}
 
