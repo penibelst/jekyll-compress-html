@@ -33,7 +33,7 @@
   {% assign _pres = _pre_before | split: "</pre>" %}
   {% if _pres.size > 0 %}
     {% if _pres.size == 2 %}
-      {% assign _new = _new | append: "<pre" | append: _pres.first | append: "</pre>" %}
+      {% capture _new %}{{ _new }}<pre{{ _pres.first }}</pre>{% endcapture %}
     {% endif %}
     {% assign _compressed = _pres.last | split: " " | join: " " %}
     {% assign _new = _new | append: _compressed %}
