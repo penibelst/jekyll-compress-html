@@ -45,11 +45,8 @@
 {% comment %}Clip whitespace around elements{% endcomment %}
 
 {% for _element in site.compress_html.clippings %}
-  {% assign _edges = " <e,<e; </e>,</e>;</e> ,</e>" | replace: "e", _element | split: ";" %}
-  {% for _edge in _edges %}
-    {% assign _replacement = _edge | split: "," %}
-    {% assign _content = _content | replace: _replacement.first, _replacement.last %}
-  {% endfor %}
+  {% assign _edges = " <e;<e; </e>;</e>;</e> ;</e>" | replace: "e", _element | split: ";" %}
+  {% assign _content = _content | replace: _edges[0], _edges[1] | replace: _edges[2], _edges[3] | replace: _edges[4], _edges[5] %}
 {% endfor %}
 
 
