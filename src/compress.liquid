@@ -1,6 +1,6 @@
 {% comment %}Input{% endcomment %}
 
-{% assign _content = content %}
+{% capture _content %}{{ content }}{% endcapture %}
 
 
 {% comment %}Remove end tags{% endcomment %}
