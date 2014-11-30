@@ -35,8 +35,7 @@
     {% if _pres.size == 2 %}
       {% capture _new %}{{ _new }}<pre{{ _pres.first }}</pre>{% endcapture %}
     {% endif %}
-    {% assign _compressed = _pres.last | split: " " | join: " " %}
-    {% assign _new = _new | append: _compressed %}
+    {% capture _new %}{{ _new }}{{ _pres.last | split: " " | join: " " }}{% endcapture %}
   {% endif %}
 {% endfor %}
 {% assign _content = _new %}
