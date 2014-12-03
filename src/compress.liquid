@@ -27,18 +27,17 @@
 
 {% comment %}Compress whitespace outside of <pre>{% endcomment %}
 
-{% assign _new = "" %}
 {% assign _pre_befores = _content | split: "<pre" %}
+{% assign _content = "" %}
 {% for _pre_before in _pre_befores %}
   {% assign _pres = _pre_before | split: "</pre>" %}
   {% if _pres.size > 0 %}
     {% if _pres.size == 2 %}
-      {% capture _new %}{{ _new }}<pre{{ _pres.first }}</pre>{% endcapture %}
+      {% capture _content %}{{ _content }}<pre{{ _pres.first }}</pre>{% endcapture %}
     {% endif %}
-    {% capture _new %}{{ _new }}{{ _pres.last | split: " " | join: " " }}{% endcapture %}
+    {% capture _content %}{{ _content }}{{ _pres.last | split: " " | join: " " }}{% endcapture %}
   {% endif %}
 {% endfor %}
-{% assign _content = _new %}
 
 
 {% comment %}Clip whitespace around elements{% endcomment %}
