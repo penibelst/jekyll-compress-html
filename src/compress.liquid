@@ -31,12 +31,12 @@
 {% assign _content = "" %}
 {% for _pre_before in _pre_befores %}
   {% assign _pres = _pre_before | split: "</pre>" %}
-  {% if _pres.size > 0 %}
-    {% if _pres.size == 2 %}
-      {% capture _content %}{{ _content }}<pre{{ _pres.first }}</pre>{% endcapture %}
-    {% endif %}
-    {% capture _content %}{{ _content }}{{ _pres.last | split: " " | join: " " }}{% endcapture %}
-  {% endif %}
+    {% case _pres.size %}
+    {% when 2 %}
+      {% capture _content %}{{ _content }}<pre{{ _pres.first }}</pre>{{ _pres.last | split: " " | join: " " }}{% endcapture %}
+    {% when 1 %}
+      {% capture _content %}{{ _content }}{{ _pres.last | split: " " | join: " " }}{% endcapture %}
+    {% endcase %}
 {% endfor %}
 
 
