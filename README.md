@@ -54,6 +54,8 @@ compress_html:
   clippings: []
   comments: []
   endings: []
+  ignore:
+    envs: []
 ```
 
 ### `clippings`
@@ -80,6 +82,10 @@ Whitespaces around the tags prevent [conditional comments][cond] from being dele
 
 An array of elements with [optional end tags][html-syntax].
 
+### `ignore.envs`
+
+An array of environments given by `ENV["JEKYLL_ENV"]` where the compress layout is ignored. This may be useful while developing a website.
+
 ### Full-blown sample
 
 ```yaml
@@ -87,6 +93,8 @@ compress_html:
   clippings: [html, head, title, base, link, meta, style, body, article, section, nav, aside, h1, h2, h3, h4, h5, h6, hgroup, header, footer, address, p, hr, blockquote, ol, ul, li, dl, dt, dd, figure, figcaption, main, div, table, caption, colgroup, col, tbody, thead, tfoot, tr, td, th
   comments: ["<!-- ", " -->"]
   endings: [html, head, body, li, dt, dd, p, rt, rp, optgroup, option, colgroup, caption, thead, tbody, tfoot, tr, td, th]
+  ignore:
+    envs: [development]
 ```
 
 ## Testing
