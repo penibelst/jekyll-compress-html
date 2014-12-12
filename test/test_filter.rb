@@ -1,10 +1,10 @@
 require "minitest"
 require "minitest/autorun"
 
-class TestCompressed < Minitest::Test
+class TestCOMPRESSED_DIR < Minitest::Test
 
   def setup
-    Dir.glob File.join(COMPRESSED, "**", "*.html") do |path|
+    Dir.glob File.join(COMPRESSED_DIR, "**", "*.html") do |path|
       File.delete path if File.file? path
     end
   end
@@ -34,14 +34,21 @@ class TestCompressed < Minitest::Test
     assert_dir "comments"
   end
 
+  def test_ignore
+    ENV["JEKYLL_ENV"] = "ignore"
+    jekyll_build ["_config.yml", "_config_ignore.yml"]
+    assert_dir "ignore"
+    ENV["JEKYLL_ENV"] = nil
+  end
+
   private
 
-  EXPECTED = "test/expected"
-  COMPRESSED = "test/compressed"
+  EXPECTED_DIR = File.join File.dirname(__FILE__), "expected"
+  COMPRESSED_DIR = File.join File.dirname(__FILE__), "compressed"
 
   def assert_dir(dir)
-    Dir.glob File.join(EXPECTED, dir, "*.html") do |path|
-      assert_equal File.new(path).read, File.new(path.gsub(EXPECTED, COMPRESSED)).read, File.basename(path)
+    Dir.glob File.join(EXPECTED_DIR, dir, "*.html") do |path|
+      assert_equal File.new(path).read, File.new(path.gsub(EXPECTED_DIR, COMPRESSED_DIR)).read, File.basename(path)
     end
   end
 

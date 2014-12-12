@@ -1,3 +1,8 @@
+{% if site.compress_html.ignore.envs contains jekyll.environment %}
+  {{ content }}
+{% else %}
+
+
 {% comment %}Input{% endcomment %}
 
 {% capture _content %}{{ content }}{% endcapture %}
@@ -51,3 +56,6 @@
 {% comment %}Output{% endcomment %}
 
 {{ _content }}
+
+
+{% endif %}
