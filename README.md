@@ -10,6 +10,7 @@ A [Jekyll][0] layout that compresses [HTML][html-spec]. At a glance:
 * removes comments;
 * preserves whitespace within `<pre>`;
 * GitHub Pages compatible;
+* ignores development environments;
 * configurable affected elements;
 * automatically tested.
 
@@ -140,7 +141,7 @@ The Liquid `split` filter is implemented through the same-titled ruby string met
 [html-semantics]: https://html.spec.whatwg.org/multipage/semantics.html
 [html-syntax]: https://html.spec.whatwg.org/multipage/syntax.html
 [html-tabular]: https://html.spec.whatwg.org/multipage/tables.html
-[10]: https://github.com/search?l=html&o=desc&q=%27jekyll-compress-html%27+path%3A_layouts&s=indexed&type=Code
+[10]: https://github.com/search?l=html&o=desc&q=jekyll-compress-html+path%3A_layouts&s=indexed&type=Code
 [11]: http://getbootstrap.com/css/
 [12]: http://jekyllrb.com/news/
 [13]: http://motherfuckingwebsite.com/
