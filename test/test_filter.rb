@@ -1,7 +1,7 @@
 require "minitest"
 require "minitest/autorun"
 
-class TestCOMPRESSED_DIR < Minitest::Test
+class TestCompressed < Minitest::Test
 
   def setup
     Dir.glob File.join(COMPRESSED_DIR, "**", "*.html") do |path|
