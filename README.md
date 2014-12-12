@@ -91,10 +91,12 @@ compress_html:
 
 ## Testing
 
-Compatible Jekyll versions are:
+The layout follows the [Semantic Versioning][semver]. Compatible versions are:
 
-* 1.x.x
-* 2.x.x
+Jekyll  | Layout
+:------ | :-----
+>= 1.0  | <= 0.4.1
+~> 2.1  | ~> 1.0
 
 Take a look at project’s `test/source` and `test/expected` directories. They contain self-explanatory specifications. Run `rake` to test the layout.
 
@@ -137,3 +139,4 @@ The Liquid `split` filter is implemented through the same-titled ruby string met
 [14]: http://iiif.io/api/image/2.0/
 [15]: http://calendar.perfplanet.com/2012/creating-a-performance-culture/
 [cond]: http://msdn.microsoft.com/en-us/library/ms537512.aspx
+[semver]: http://semver.org/
