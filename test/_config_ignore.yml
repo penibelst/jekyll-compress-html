@@ -1,0 +1,3 @@
+compress_html:
+  ignore:
+    envs: [ignore]

@@ -6,7 +6,7 @@ task :default => [:test]
 
 task :build => :clean do
   yaml = File.open("src/compress.yaml").read
-  liquid = File.open("src/compress.liquid").read.gsub /\s+(?={)/, ""
+  liquid = File.open("src/compress.liquid").read.gsub(/\s+(?={)/, "").gsub(/{% comment %}[^{]+{% endcomment %}/, "")
 
   mkdir_p "_layouts"
   File.open "_layouts/compress.html", File::CREAT|File::WRONLY do |f|
