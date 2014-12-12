@@ -93,10 +93,10 @@ compress_html:
 
 The layout follows the [Semantic Versioning][semver]. Compatible versions are:
 
-Jekyll  | Layout
-:------ | :-----
->= 1.0  | <= 0.4.1
-~> 2.1  | ~> 1.0
+Jekyll    | Layout
+:-----    | :-----
+`>= 1.0`  | `<= 0.4.1`
+`~> 2.1`  | `~> 1.0`
 
 Take a look at project’s `test/source` and `test/expected` directories. They contain self-explanatory specifications. Run `rake` to test the layout.
 
