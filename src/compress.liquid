@@ -52,7 +52,12 @@
 
 {% comment %}Clip whitespace around elements{% endcomment %}
 
-{% for _element in site.compress_html.clippings %}
+{% if site.compress_html.clippings == "all" %}
+  {% assign _clippings = "html head title base link meta style body article section nav aside h1 h2 h3 h4 h5 h6 hgroup header footer address p hr blockquote ol ul li dl dt dd figure figcaption main div table caption colgroup col tbody thead tfoot tr td th" | split: " " %}
+{% else %}
+  {% assign _clippings = site.compress_html.clippings %}
+{% endif %}
+{% for _element in _clippings %}
   {% assign _edges = " <e;<e; </e>;</e>;</e> ;</e>" | replace: "e", _element | split: ";" %}
   {% assign _content = _content | replace: _edges[0], _edges[1] | replace: _edges[2], _edges[3] | replace: _edges[4], _edges[5] %}
 {% endfor %}
