@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2
+  - 2.1
 env:
   - JEKYLL_VERSION=2.1.0
   - JEKYLL_VERSION=2.0
