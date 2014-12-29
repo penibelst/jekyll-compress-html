@@ -95,7 +95,7 @@ Whitespaces around the tags prevent [conditional comments][cond] from being dele
 
 ### `endings`
 
-An array of elements with [optional end tags][html-syntax]. These end tags 
+An array of elements with [optional end tags][html-syntax]. These end tags will be removed.
 
 Example:
 
