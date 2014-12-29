@@ -14,9 +14,9 @@ class TestCompressed < Minitest::Test
     assert_dir "default"
   end
 
-  def test_full
-    jekyll_build ["_config.yml", "_config_full.yml"]
-    assert_dir "full"
+  def test_all
+    jekyll_build ["_config.yml", "_config_all.yml"]
+    assert_dir "all"
   end
 
   def test_clippings
