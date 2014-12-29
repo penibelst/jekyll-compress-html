@@ -10,7 +10,12 @@
 
 {% comment %}Remove end tags{% endcomment %}
 
-{% for _element in site.compress_html.endings %}
+{% if site.compress_html.endings == "all" %}
+  {% assign _endings = "html head body li dt dd p rt rp optgroup option colgroup caption thead tbody tfoot tr td th" | split: " " %}
+{% else %}
+  {% assign _endings = site.compress_html.endings %}
+{% endif %}
+{% for _element in _endings %}
   {% capture _end %}</{{ _element }}>{% endcapture %}
   {% assign _content = _content | remove: _end %}
 {% endfor %}
