@@ -68,6 +68,20 @@ An array of elements to clip whitespace around them. The following elements may 
 * [Grouping content][html-semantics] except the `pre` element;
 * [Tabular data][html-tabular].
 
+Example:
+
+  ```yaml
+compress_html:
+  clippings: [div, p, ul, td, h1, h2]
+```
+
+Use the shortcut `all` to clip all safe elements.
+
+  ```yaml
+compress_html:
+  clippings: all
+```
+
 ### `comments`
 
 An array of exactly two comment tags to strip comments enclosed by them. The first string must be the start tag, the second must be the end tag. Example:
@@ -81,7 +95,21 @@ Whitespaces around the tags prevent [conditional comments][cond] from being dele
 
 ### `endings`
 
-An array of elements with [optional end tags][html-syntax].
+An array of elements with [optional end tags][html-syntax]. These end tags 
+
+Example:
+
+  ```yaml
+compress_html:
+  endings: [p, li, td]
+```
+
+Use the shortcut `all` to remove all optional endings.
+
+  ```yaml
+compress_html:
+  endings: all
+```
 
 ### `ignore.envs`
 
