@@ -8,8 +8,8 @@ task :build => :clean do
   yaml = File.open("src/compress.yaml").read
   liquid = File.open("src/compress.liquid").read.gsub(/\s+(?={)/, "").gsub(/{% comment %}[^{]+{% endcomment %}/, "")
 
-  mkdir_p "_layouts"
-  File.open "_layouts/compress.html", File::CREAT|File::WRONLY do |f|
+  mkdir_p "_build"
+  File.open "_build/compress.html", File::CREAT|File::WRONLY do |f|
     f.puts yaml, "", liquid
   end
 end
@@ -26,4 +26,4 @@ task :performance => :build do
   end
 end
 
-CLEAN.include FileList["_layouts/compress.html"]
+CLEAN.include FileList["_build/compress.html"]
