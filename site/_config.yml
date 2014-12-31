@@ -1,0 +1,6 @@
+kramdown:
+  input: GFM
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  endings: all
