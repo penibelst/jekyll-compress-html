@@ -1,0 +1,27 @@
+---
+---
+
+@import "normalize";
+
+/*
+  Foundation
+  docs: http://foundation.zurb.com/docs/
+  repo: https://github.com/zurb/bower-foundation
+*/
+@import "foundation/components/grid";
+@import "foundation/components/tables";
+@import "foundation/components/type";
+
+/* overrides Foundation styles */
+
+pre code {
+  display: block;
+  background-color: $ghost;
+  margin-bottom: rem-calc(20);
+  padding: rem-calc(20);
+  overflow-x: auto;
+}
+
+td, th {
+  vertical-align: top;
+}
