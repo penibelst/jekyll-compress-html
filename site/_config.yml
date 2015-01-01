@@ -1,3 +1,6 @@
+sass:
+    sass_dir: ui/_scss
+    style: compressed
 kramdown:
   input: GFM
 compress_html:
