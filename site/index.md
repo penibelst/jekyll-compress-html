@@ -3,9 +3,7 @@ title: Compress HTML in Jekyll
 layout: default
 ---
 
-A [Jekyll][0] layout that compresses [HTML][html-spec].
-
-At a glance:
+A [Jekyll][0] layout that compresses [HTML][html-spec]. At a glance:
 
 * removes unnecessary whitespace;
 * removes optional end tags;
