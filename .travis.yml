@@ -7,6 +7,6 @@ env:
 before_script:
   - bundle exec jekyll --version
 after_success:
-  - rake performance
+  - bundle exec rake site:test
 notifications:
   email: false

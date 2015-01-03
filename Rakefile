@@ -27,3 +27,18 @@ task :performance => :build do
 end
 
 CLEAN.include FileList["_build/compress.html"]
+
+namespace :site do
+  task :build do
+    Dir.chdir "site" do
+      sh "bundle exec jekyll build"
+    end
+  end
+  task :test => :build do
+    Dir.chdir "site" do
+      sh "wget -O vnu.zip https://github.com/validator/validator/releases/download/20141006/vnu-20141013.jar.zip"
+      sh "unzip vnu.zip"
+      sh "java -jar ./vnu/vnu.jar ./_site/"
+    end
+  end
+end
