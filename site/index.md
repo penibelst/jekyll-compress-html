@@ -124,7 +124,7 @@ compress_html:
   comments: ["<!-- ", " -->"]
   endings: all
   ignore:
-    envs: [development]
+    envs: [local]
 ~~~
 
 ## Restrictions
