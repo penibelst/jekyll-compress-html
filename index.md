@@ -3,9 +3,7 @@ title: Compress HTML in Jekyll
 layout: default
 ---
 
-A [Jekyll][0] layout that compresses [HTML][html-spec].
-
-At a glance:
+A [Jekyll][jekyll] layout that compresses [HTML][html-spec]. At a glance:
 
 * removes unnecessary whitespace;
 * removes optional end tags;
@@ -16,7 +14,7 @@ At a glance:
 * configurable affected elements;
 * automatically tested.
 
-The layout is written in pure [Liquid][2], no plugins are required.
+The layout is written in pure [Liquid][liquid], no plugins are required.
 
 The main reason for the compression is to [fight the space between inline block elements][3]. File size reduction is a welcome gain.
 
@@ -141,31 +139,29 @@ This page itself is compressed by the layout. It’s hosted by GitHub in the `gh
 
 Look how [others use][10] the layout on GitHub too.
 
-## Testing
-
-[![Build Status](https://api.travis-ci.org/penibelst/jekyll-compress-html.svg?branch=master)](https://travis-ci.org/penibelst/jekyll-compress-html)
-
-Take a look at project’s `test/source` and `test/expected` directories. They contain self-explanatory specifications. Run `rake` to test the layout.
-
 ## Development
+
+[![Build Status](https://api.travis-ci.org/penibelst/jekyll-compress-html.svg?branch=master){: .status }](https://travis-ci.org/penibelst/jekyll-compress-html)
 
 Feel free to submit bugs, patches, and questions in the [repository](https://github.com/penibelst/jekyll-compress-html).
 
+Take a look at project’s `test/source` and `test/expected` directories. They contain self-explanatory specifications. Run `rake` to test the layout.
+
 ----
 
-© 2014–2015 [Anatol Broder](http://penibelst.de/)
+© 2014–{{ site.time | date: "%Y" }} [Anatol Broder](http://penibelst.de/). Licensed under the MIT License.
 
-[0]: http://jekyllrb.com/
+[jekyll]: http://jekyllrb.com/
+[jekyll-news]: http://jekyllrb.com/news/
 [html-spec]: https://html.spec.whatwg.org/
-[2]: http://docs.shopify.com/themes/liquid-documentation/basics
-[3]: http://css-tricks.com/fighting-the-space-between-inline-block-elements/
-[4]: https://github.com/penibelst/jekyll-compress-html/releases/latest
 [html-semantics]: https://html.spec.whatwg.org/multipage/semantics.html
 [html-syntax]: https://html.spec.whatwg.org/multipage/syntax.html
 [html-tabular]: https://html.spec.whatwg.org/multipage/tables.html
+[liquid]: http://docs.shopify.com/themes/liquid-documentation/basics
+[3]: http://css-tricks.com/fighting-the-space-between-inline-block-elements/
+[4]: https://github.com/penibelst/jekyll-compress-html/releases/latest
 [10]: https://github.com/search?l=html&o=desc&q=jekyll-compress-html+path%3A_layouts&s=indexed&type=Code
 [11]: http://getbootstrap.com/css/
-[jekyll-news]: http://jekyllrb.com/news/
 [13]: http://motherfuckingwebsite.com/
 [14]: http://iiif.io/api/image/2.0/
 [15]: http://calendar.perfplanet.com/2012/creating-a-performance-culture/

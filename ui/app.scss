@@ -8,20 +8,37 @@
   docs: http://foundation.zurb.com/docs/
   repo: https://github.com/zurb/bower-foundation
 */
+
+/* settings */
+$code-border-style: none;
+
 @import "foundation/components/grid";
 @import "foundation/components/tables";
 @import "foundation/components/type";
 
-/* overrides Foundation styles */
+/* own styles */
+
+/* zoom on large screens */
+@media (min-width: 62.5em) {
+  html {
+    font-size: 1.6vw;
+  }
+}
+
+pre {
+  margin-bottom: $paragraph-margin-bottom;
+}
 
 pre code {
   display: block;
-  background-color: $ghost;
-  margin-bottom: rem-calc(20);
-  padding: rem-calc(20);
+  padding: $paragraph-margin-bottom;
   overflow-x: auto;
 }
 
 td, th {
   vertical-align: top;
+}
+
+.status {
+  height: rem-calc(20);
 }
