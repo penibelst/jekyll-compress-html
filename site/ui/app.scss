@@ -14,6 +14,13 @@
 
 /* overrides Foundation styles */
 
+/* zoom on large screens */
+@media (min-width: 62.5em) {
+  html {
+    font-size: 1.6vw;
+  }
+}
+
 pre code {
   display: block;
   background-color: $ghost;
