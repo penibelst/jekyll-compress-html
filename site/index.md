@@ -149,7 +149,7 @@ Take a look at project’s `test/source` and `test/expected` directories. They c
 
 ----
 
-© 2014–{{ site.time | date: "%Y" }} [Anatol Broder](http://penibelst.de/). Licensed under the MIT License.
+© 2014–{{ site.time | date: "%Y" }} [Anatol Broder](http://penibelst.de/). Released under the MIT License.
 
 [jekyll]: http://jekyllrb.com/
 [jekyll-news]: http://jekyllrb.com/news/
