@@ -35,13 +35,18 @@ namespace :site do
     end
   end
 
-  task :test => :build do
-    Dir.chdir "site" do
-      sh "wget -O vnu.zip https://github.com/validator/validator/releases/download/20141006/vnu-20141013.jar.zip"
-      sh "unzip -u vnu.zip"
-      sh "java -jar ./vnu/vnu.jar _site"
-    end
+  task :validator => :build do
+    sh "wget -O vnu.zip https://github.com/validator/validator/releases/download/20141006/vnu-20141013.jar.zip"
+    sh "unzip -u vnu.zip"
+    sh "java -jar ./vnu/vnu.jar ./site/_site"
   end
+
+  task :proofer => :build do
+    require 'html/proofer'
+    HTML::Proofer.new("./site/_site", ssl_verifypeer: false).run
+  end
+
+  task :test => [:validator]
 
   desc "Commit the local site to the gh-pages branch and publish to GitHub Pages"
   task :publish do
