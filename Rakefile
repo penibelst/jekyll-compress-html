@@ -4,29 +4,34 @@ require "rake/clean"
 
 task :default => [:test]
 
-task :build => :clean do
+BUILD_DIR = "_build"
+BUILD_FILE = File.join(BUILD_DIR, "compress.html")
+
+file BUILD_FILE => FileList["src/compress.*", BUILD_DIR] do
   yaml = File.open("src/compress.yaml").read
   liquid = File.open("src/compress.liquid").read.gsub(/\s+(?={)/, "").gsub(/{% comment %}[^{]+{% endcomment %}/, "")
 
-  mkdir_p "_build"
-  File.open "_build/compress.html", File::CREAT|File::WRONLY do |f|
+  File.open BUILD_FILE, File::CREAT|File::WRONLY do |f|
     f.puts yaml, "", liquid
   end
 end
 
-Rake::TestTask.new :test => :build do |t|
+Rake::TestTask.new :test => BUILD_FILE do |t|
   t.libs << "test"
   t.test_files = FileList["test/test_*.rb"]
 end
 
-task :performance => :build do
+task :performance => BUILD_FILE do
   require "benchmark"
   Dir.chdir "performance" do
-    puts Benchmark.measure { sh "bundle exec jekyll build" }
+    puts Benchmark.measure do
+      sh "bundle exec jekyll build"
+    end
   end
 end
 
-CLEAN.include FileList["_build/compress.html"]
+CLEAN.include FileList["vnu*"]
+CLOBBER.include FileList["_build/*"]
 
 namespace :site do
   task :build do
@@ -35,10 +40,14 @@ namespace :site do
     end
   end
 
-  task :validator => :build do
+  VALIDATOR = "vnu/vnu.jar"
+  file VALIDATOR do
     sh "wget -O vnu.zip https://github.com/validator/validator/releases/download/20141006/vnu-20141013.jar.zip"
-    sh "unzip -u vnu.zip"
-    sh "java -jar ./vnu/vnu.jar ./site/_site"
+    sh "unzip vnu.zip #{VALIDATOR}"
+  end
+
+  task :validate => [:build, VALIDATOR] do
+    sh "java -jar ./#{VALIDATOR} ./site/_site"
   end
 
   task :proofer => :build do
@@ -46,7 +55,7 @@ namespace :site do
     HTML::Proofer.new("./site/_site", ssl_verifypeer: false).run
   end
 
-  task :test => [:validator]
+  task :test => [:validate]
 
   desc "Commit the local site to the gh-pages branch and publish to GitHub Pages"
   task :publish do
