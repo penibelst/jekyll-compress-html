@@ -67,7 +67,7 @@ namespace :site do
     rm_rf FileList[File.join(GH_PAGES_DIR, "**", "*")]
 
     puts "Copying site to gh-pages branch..."
-    cp_r FileList[File.join("site", "*")].include(".gitignore"), GH_PAGES_DIR
+    cp_r FileList[File.join("site", "*"), ".gitignore"], GH_PAGES_DIR
 
     puts "Committing and pushing to GitHub Pages..."
     sha = `git log`.match(/[a-z0-9]{40}/)[0]
