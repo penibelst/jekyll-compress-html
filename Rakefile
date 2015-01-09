@@ -48,9 +48,7 @@ namespace :site do
     GH_PAGES_DIR = "_gh-pages"
 
     # Ensure the gh-pages dir exists so we can generate into it.
-    puts "Checking for gh-pages dir..."
     unless File.exist? GH_PAGES_DIR
-      puts "Creating gh-pages dir..."
       sh "git clone git@github.com:penibelst/jekyll-compress-html #{GH_PAGES_DIR}"
     end
 
@@ -61,7 +59,7 @@ namespace :site do
     end
 
     puts "Cleaning gh-pages directory..."
-    rm_rf FileList[File.join(GH_PAGES_DIR, "**", "*")], { :verbose => true }
+    rm_rf FileList[File.join(GH_PAGES_DIR, "**", "*")]
 
     puts "Copying site to gh-pages branch..."
     cp_r FileList[File.join("site", "*")].include(".gitignore"), GH_PAGES_DIR
