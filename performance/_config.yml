@@ -1,5 +1,4 @@
 source: source
-destination: compressed
 compress_html:
   clippings: [div]
   comments: ["<!-- ", " -->"]

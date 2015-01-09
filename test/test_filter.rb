@@ -44,7 +44,7 @@ class TestCompressed < Minitest::Test
   private
 
   EXPECTED_DIR = File.join File.dirname(__FILE__), "expected"
-  COMPRESSED_DIR = File.join File.dirname(__FILE__), "compressed"
+  COMPRESSED_DIR = File.join File.dirname(__FILE__), "_site"
 
   def assert_dir(dir)
     Dir.glob File.join(EXPECTED_DIR, dir, "*.html") do |path|
