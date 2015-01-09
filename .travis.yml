@@ -6,7 +6,8 @@ env:
   - JEKYLL_VERSION=2.0
 before_script:
   - bundle exec jekyll --version
-after_success:
+script:
+  - bundle exec rake test
   - bundle exec rake site:test
 notifications:
   email: false
