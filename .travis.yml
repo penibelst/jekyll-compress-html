@@ -2,10 +2,11 @@ language: ruby
 rvm:
   - 2.1
 env:
-  - JEKYLL_VERSION=2.1.0
-  - JEKYLL_VERSION=2.0
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+  matrix:
+    - JEKYLL_VERSION=2.1.0
+    - JEKYLL_VERSION=2.0
 before_script:
   - bundle exec jekyll --version
 script:
