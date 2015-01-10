@@ -1,6 +1,6 @@
 sass:
-    sass_dir: ui/_scss
-    style: compressed
+  sass_dir: ui/_scss
+  style: compressed
 compress_html:
   clippings: all
   comments: ["<!-- ", " -->"]
