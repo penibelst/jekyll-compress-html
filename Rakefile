@@ -33,12 +33,6 @@ end
 CLEAN.include FileList["vnu*"]
 CLOBBER.include FileList["_build/*"]
 
-GH_PAGES_DIR = "_gh-pages"
-directory GH_PAGES_DIR
-file GH_PAGES_DIR do
-  sh "git clone git@github.com:penibelst/jekyll-compress-html #{GH_PAGES_DIR}"
-end
-
 namespace :site do
   task :build do
     Dir.chdir "site" do
@@ -62,6 +56,12 @@ namespace :site do
   end
 
   task :test => [:validate]
+
+  GH_PAGES_DIR = "_gh-pages"
+  directory GH_PAGES_DIR
+  file GH_PAGES_DIR do
+    sh "git clone git@github.com:penibelst/jekyll-compress-html #{GH_PAGES_DIR}"
+  end
 
   desc "Commit the local site to the gh-pages branch and publish to GitHub Pages"
   task :publish => [GH_PAGES_DIR, :test] do
