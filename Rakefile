@@ -7,11 +7,12 @@ task :default => [:test]
 BUILD_DIR = "_build"
 BUILD_FILE = File.join(BUILD_DIR, "compress.html")
 
-file BUILD_FILE => FileList["src/compress.*", BUILD_DIR] do
+directory BUILD_DIR
+file BUILD_FILE => FileList["src/compress.*", BUILD_DIR] do |bf|
   yaml = File.open("src/compress.yaml").read
   liquid = File.open("src/compress.liquid").read.gsub(/\s+(?={)/, "").gsub(/{% comment %}[^{]+{% endcomment %}/, "")
 
-  File.open BUILD_FILE, File::CREAT|File::WRONLY do |f|
+  File.open bf.name, File::CREAT|File::WRONLY do |f|
     f.puts yaml, "", liquid
   end
 end
@@ -30,7 +31,7 @@ task :performance => BUILD_FILE do
   end
 end
 
-CLEAN.include FileList["vnu*"]
+CLEAN.include FileList["vnu*", "Gemfile.lock"]
 CLOBBER.include FileList["_build/*"]
 
 namespace :site do
@@ -41,13 +42,13 @@ namespace :site do
   end
 
   VALIDATOR = "vnu/vnu.jar"
-  file VALIDATOR do
+  file VALIDATOR do |f|
     sh "wget -O vnu.zip https://github.com/validator/validator/releases/download/20141006/vnu-20141013.jar.zip"
-    sh "unzip vnu.zip #{VALIDATOR}"
+    sh "unzip vnu.zip #{f.name}"
   end
 
   task :validate => [:build, VALIDATOR] do
-    sh "java -jar ./#{VALIDATOR} ./site/_site"
+    sh "java -jar #{File.join(".", VALIDATOR)} ./site/_site"
   end
 
   task :proof => :build do
@@ -59,8 +60,8 @@ namespace :site do
 
   GH_PAGES_DIR = "_gh-pages"
   directory GH_PAGES_DIR
-  file GH_PAGES_DIR do
-    sh "git clone git@github.com:penibelst/jekyll-compress-html #{GH_PAGES_DIR}"
+  file GH_PAGES_DIR do |f|
+    sh "git clone git@github.com:penibelst/jekyll-compress-html #{f.name}"
   end
 
   desc "Commit the local site to the gh-pages branch and publish to GitHub Pages"
