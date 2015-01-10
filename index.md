@@ -32,7 +32,7 @@ Site | Original | Compressed |
 
 ## Installation
 
-1. Get the [latest release][4]. Extract `compress.html` and copy it to your `_layouts`.
+1. Get the [latest release][github-repo-latest]. Extract `compress.html` and copy it to your `_layouts`.
 1. Reference the `compress` layout in your highest-level layout. For example in `_layouts/default.html`:
 
 ~~~html
@@ -135,15 +135,15 @@ compress_html:
 
 ## Examples
 
-This page itself is compressed by the layout. It’s hosted by GitHub in the `gh-pages` [branch](https://github.com/penibelst/jekyll-compress-html/tree/gh-pages).
+This page itself is compressed by the layout. It’s hosted by GitHub in the `gh-pages` [branch][github-repo-gh-pages].
 
-Look how [others use][10] the layout on GitHub too.
+Look how [others use][github-search] the layout on GitHub too.
 
 ## Development
 
 [![Build Status](https://api.travis-ci.org/penibelst/jekyll-compress-html.svg?branch=master){: .status }](https://travis-ci.org/penibelst/jekyll-compress-html)
 
-Feel free to submit bugs, patches, and questions in the [repository](https://github.com/penibelst/jekyll-compress-html).
+Feel free to submit bugs, patches, and questions in the [repository][github-repo].
 
 Take a look at project’s `test/source` and `test/expected` directories. They contain self-explanatory specifications. Run `rake` to test the layout.
 
@@ -159,8 +159,10 @@ Take a look at project’s `test/source` and `test/expected` directories. They c
 [html-tabular]: https://html.spec.whatwg.org/multipage/tables.html
 [liquid]: http://docs.shopify.com/themes/liquid-documentation/basics
 [3]: http://css-tricks.com/fighting-the-space-between-inline-block-elements/
-[4]: https://github.com/penibelst/jekyll-compress-html/releases/latest
-[10]: https://github.com/search?l=html&o=desc&q=jekyll-compress-html+path%3A_layouts&s=indexed&type=Code
+[github-repo]: https://github.com/penibelst/jekyll-compress-html
+[github-repo-latest]: https://github.com/penibelst/jekyll-compress-html/releases/latest
+[github-repo-gh-pages]: https://github.com/penibelst/jekyll-compress-html/tree/gh-pages
+[github-search]: https://github.com/search?l=html&o=desc&q=filename%3Acompress.html+penibelst+compress_html&s=indexed&type=Code
 [11]: http://getbootstrap.com/css/
 [13]: http://motherfuckingwebsite.com/
 [14]: http://iiif.io/api/image/2.0/
