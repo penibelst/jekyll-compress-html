@@ -13,6 +13,6 @@ script:
   - bundle exec rake test
   - bundle exec rake site:test
 after_success:
-  - bundle exec rake site:proofer
+  - bundle exec rake site:proof
 notifications:
   email: false

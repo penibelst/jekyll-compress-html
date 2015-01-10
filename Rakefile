@@ -56,7 +56,7 @@ namespace :site do
     sh "java -jar ./#{VALIDATOR} ./site/_site"
   end
 
-  task :proofer => :build do
+  task :proof => :build do
     require 'html/proofer'
     HTML::Proofer.new("./site/_site", ssl_verifypeer: false).run
   end
