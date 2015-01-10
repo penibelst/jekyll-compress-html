@@ -64,7 +64,7 @@ namespace :site do
   task :test => [:validate]
 
   desc "Commit the local site to the gh-pages branch and publish to GitHub Pages"
-  task :publish => [GH_PAGES_DIR] do
+  task :publish => [GH_PAGES_DIR, :test] do
     Dir.chdir GH_PAGES_DIR do
       sh "git checkout gh-pages"
       sh "git pull origin gh-pages"
