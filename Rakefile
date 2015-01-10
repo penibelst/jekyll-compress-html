@@ -53,7 +53,10 @@ namespace :site do
 
   task :proof => :build do
     require 'html/proofer'
-    HTML::Proofer.new("./site/_site", ssl_verifypeer: false).run
+    HTML::Proofer.new("./site/_site", {
+      :verbose => true,
+      :ssl_verifypeer => false
+    }).run
   end
 
   task :test => [:validate]
