@@ -153,7 +153,7 @@ Take a look at project’s `test/source` and `test/expected` directories. They c
 
 [jekyll]: http://jekyllrb.com/
 [jekyll-news]: http://jekyllrb.com/news/
-[html-spec]: https://html.spec.whatwg.org/
+[html-spec]: https://html.spec.whatwg.org/multipage/
 [html-semantics]: https://html.spec.whatwg.org/multipage/semantics.html
 [html-syntax]: https://html.spec.whatwg.org/multipage/syntax.html
 [html-tabular]: https://html.spec.whatwg.org/multipage/tables.html
