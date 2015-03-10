@@ -21,20 +21,6 @@
 {% endfor %}
 
 
-{% comment %}Remove comments{% endcomment %}
-
-{% if site.compress_html.comments.size == 2 %}
-  {% assign _comment_befores = _content | split: site.compress_html.comments.first %}
-  {% for _comment_before in _comment_befores %}
-    {% assign _comment_content = _comment_before | split: site.compress_html.comments.last | first %}
-    {% if _comment_content %}
-      {% capture _comment %}{{ site.compress_html.comments.first }}{{ _comment_content }}{{ site.compress_html.comments.last }}{% endcapture %}
-      {% assign _content = _content | remove: _comment %}
-    {% endif %}
-  {% endfor %}
-{% endif %}
-
-
 {% comment %}Compress whitespace outside of <pre>{% endcomment %}
 
 {% assign _pre_befores = _content | split: "<pre" %}
@@ -48,6 +34,20 @@
       {% capture _content %}{{ _content }}{{ _pres.last | split: " " | join: " " }}{% endcapture %}
     {% endcase %}
 {% endfor %}
+
+
+{% comment %}Remove comments{% endcomment %}
+
+{% if site.compress_html.comments.size == 2 %}
+  {% assign _comment_befores = _content | split: site.compress_html.comments.first %}
+  {% for _comment_before in _comment_befores %}
+    {% assign _comment_content = _comment_before | split: site.compress_html.comments.last | first %}
+    {% if _comment_content %}
+      {% capture _comment %}{{ site.compress_html.comments.first }}{{ _comment_content }}{{ site.compress_html.comments.last }}{% endcapture %}
+      {% assign _content = _content | remove: _comment %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
 
 
 {% comment %}Clip whitespace around elements{% endcomment %}
