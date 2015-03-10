@@ -25,9 +25,7 @@ end
 task :performance => BUILD_FILE do
   require "benchmark"
   Dir.chdir "performance" do
-    puts Benchmark.measure do
-      sh "bundle exec jekyll build"
-    end
+    puts Benchmark.measure { sh "bundle exec jekyll build" }
   end
 end
 
