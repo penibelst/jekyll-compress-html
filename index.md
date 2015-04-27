@@ -1,6 +1,7 @@
 ---
 title: Compress HTML in Jekyll
 layout: default
+prefetch: "https://github.com/penibelst/jekyll-compress-html"
 ---
 
 A [Jekyll][jekyll] layout that compresses [HTML][html-spec]. At a glance:
