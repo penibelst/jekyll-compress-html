@@ -53,7 +53,9 @@ namespace :site do
     require 'html/proofer'
     HTML::Proofer.new("./site/_site", {
       :verbose => true,
-      :ssl_verifypeer => false
+      :typhoeus => {
+        :ssl_verifypeer => false,
+        :ssl_verifyhost => 0}
     }).run
   end
 
