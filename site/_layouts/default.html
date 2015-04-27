@@ -10,6 +10,10 @@ layout: compress
   <title>{{ page.title }}</title>
   <link rel="stylesheet" href="/ui/app.css">
   <link rel="icon" href="/ui/img/favicon-1.png">
+  {% if page.prefetch %}
+    <link rel="prefetch" href="{{ page.prefetch }}">
+    <link rel="prerender" href="{{ page.prefetch }}">
+  {% endif %}
 </head>
 <body>
   <div class="row">
