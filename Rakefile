@@ -59,7 +59,7 @@ namespace :site do
     }).run
   end
 
-  task :test => [:validate]
+  task :test => [:validate, :proof]
 
   GH_PAGES_DIR = "_gh-pages"
   directory GH_PAGES_DIR
