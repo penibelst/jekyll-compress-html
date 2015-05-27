@@ -19,18 +19,6 @@ The layout is written in pure [Liquid][liquid], no plugins are required.
 
 The main reason for the compression is to [fight the space between inline block elements][3]. File size reduction is a welcome gain.
 
-## Results
-
-All options activated. File sizes in bytes. As of June 2014.
-
-Site | Original | Compressed |
-:--- | -------: | ---------: |
-[Bootstrap CSS][11] | 249762 | 232085 |
-[IIIF Image][14] | 61150 | 52732 |
-[Jekyll News][jekyll-news] | 45358 | 40251 |
-[Mother&shy;fucking][13] | 5200 | 4519 |
-[Performance Culture][15] | 20715 | 19986 |
-
 ## Installation
 
 1. Get the [latest release][github-repo-latest]. Extract `compress.html` and copy it to your `_layouts`.
@@ -159,7 +147,6 @@ Take a look at project’s `test/source` and `test/expected` directories. They c
 © 2014–{{ site.time | date: "%Y" }} [Anatol Broder](http://anatol.penibelst.de/). Released under the MIT License.
 
 [jekyll]: http://jekyllrb.com/
-[jekyll-news]: http://jekyllrb.com/news/
 [html-spec]: https://html.spec.whatwg.org/multipage/
 [html-semantics]: https://html.spec.whatwg.org/multipage/semantics.html
 [html-syntax]: https://html.spec.whatwg.org/multipage/syntax.html
@@ -170,10 +157,6 @@ Take a look at project’s `test/source` and `test/expected` directories. They c
 [github-repo-latest]: https://github.com/penibelst/jekyll-compress-html/releases/latest
 [github-repo-gh-pages]: https://github.com/penibelst/jekyll-compress-html/tree/gh-pages
 [github-search]: https://github.com/search?l=html&o=desc&q=filename%3Acompress.html+penibelst+compress_html&s=indexed&type=Code
-[11]: http://getbootstrap.com/css/
-[13]: http://motherfuckingwebsite.com/
-[14]: http://iiif.io/api/image/2.0/
-[15]: http://calendar.perfplanet.com/2012/creating-a-performance-culture/
 [cond]: http://msdn.microsoft.com/en-us/library/ms537512.aspx
 [hutchison-review]: http://www.devwithimagination.com/2014/06/12/jekyll-compress-a-pure-liquid-way-to-compress-html/
 [knight-review]: http://rich-knight.com/articles/compressing-html-in-jekyll/
