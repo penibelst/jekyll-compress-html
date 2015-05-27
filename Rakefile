@@ -39,6 +39,12 @@ namespace :site do
     end
   end
 
+  task :preview do
+    Dir.chdir "site" do
+      sh "bundle exec jekyll serve --drafts"
+    end
+  end
+
   VALIDATOR = "vnu/vnu.jar"
   file VALIDATOR do |f|
     sh "wget -O vnu.zip https://github.com/validator/validator/releases/download/20141006/vnu-20141013.jar.zip"
