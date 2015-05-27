@@ -148,6 +148,12 @@ Feel free to submit bugs, patches, and questions in the [repository][github-repo
 
 Take a look at project’s `test/source` and `test/expected` directories. They contain self-explanatory specifications. Run `rake` to test the layout.
 
+## Reviews
+
+* _[A pure Liquid way to compress HTML][hutchison-review]_ by David Hutchison
+* _[I am a Jekyll God][braithwaite-review]_ by Garth Braithwaite
+* _[Compressing HTML in Jekyll without a plugin][knight-review]_ by Rich Knight
+
 ----
 
 © 2014–{{ site.time | date: "%Y" }} [Anatol Broder](http://anatol.penibelst.de/). Released under the MIT License.
@@ -169,3 +175,6 @@ Take a look at project’s `test/source` and `test/expected` directories. They c
 [14]: http://iiif.io/api/image/2.0/
 [15]: http://calendar.perfplanet.com/2012/creating-a-performance-culture/
 [cond]: http://msdn.microsoft.com/en-us/library/ms537512.aspx
+[hutchison-review]: http://www.devwithimagination.com/2014/06/12/jekyll-compress-a-pure-liquid-way-to-compress-html/
+[knight-review]: http://rich-knight.com/articles/compressing-html-in-jekyll/
+[braithwaite-review]: http://garthdb.com/writings/i-am-a-jekyll-god/
