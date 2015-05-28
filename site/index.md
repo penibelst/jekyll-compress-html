@@ -13,6 +13,7 @@ A [Jekyll][jekyll] layout that compresses [HTML][html-spec]. At a glance:
 * GitHub Pages compatible;
 * ignores development environments;
 * configurable affected elements;
+* debugging mode;
 * automatically tested.
 
 The layout is written in pure [Liquid][liquid], no plugins are required.
@@ -45,6 +46,7 @@ compress_html:
   clippings: []
   comments: []
   endings: []
+  debugging: false
   ignore:
     envs: []
 ~~~
@@ -101,6 +103,19 @@ compress_html:
   endings: all
 ~~~
 
+## debugging
+
+A boolean value to turn on the debugging mode. If true, the layout creates a HTML comment `before` the compressed content. The comment contains a list of sizes during the compressing steps.
+
+~~~yaml
+compress_html:
+  debugging: true
+~~~
+
+This page itself is compressed in debugging mode for educational purposes only. Please don’t debug in public.
+
+The debugging comment is not affected by the `comments` option.
+
 ### ignore.envs
 
 An array of environments given by `ENV["JEKYLL_ENV"]` where the compress layout is ignored. This may be useful while developing a website.
@@ -112,6 +127,7 @@ compress_html:
   clippings: all
   comments: ["<!-- ", " -->"]
   endings: all
+  debugging: true
   ignore:
     envs: [local]
 ~~~
