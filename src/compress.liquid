@@ -6,7 +6,7 @@
 {% comment %}Input{% endcomment %}
 
 {% capture _content %}{{ content }}{% endcapture %}
-{% if site.compress_html.debugging %}<!-- compress_html.debugging: true -->{% endif %}
+{% if site.compress_html.debugging %}<!-- compress_html.debugging: size:{{ _content | size }}, {% endif %}
 
 {% comment %}Remove end tags{% endcomment %}
 
@@ -62,6 +62,7 @@
   {% assign _content = _content | replace: _edges[0], _edges[1] | replace: _edges[2], _edges[3] | replace: _edges[4], _edges[5] %}
 {% endfor %}
 
+{% if site.compress_html.debugging %} endsize:{{ _content | size | plus: 1 }} -->{% endif %}
 
 {% comment %}Output{% endcomment %}
 
