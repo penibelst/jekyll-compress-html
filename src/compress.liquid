@@ -6,7 +6,7 @@
 {% comment %}Input{% endcomment %}
 
 {% capture _content %}{{ content }}{% endcapture %}
-
+{% if site.compress_html.debugging %}<!-- compress_html.debugging: true -->{% endif %}
 
 {% comment %}Remove end tags{% endcomment %}
 
