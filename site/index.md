@@ -39,7 +39,7 @@ Now all your markup will be processed by the `compress` layout.
 
 ## Configuration
 
-By default the layout replaces contiguous whitespace with a single whitespace character. Additional settings can be specified in the `compress_html` key inside the `_config.yml` file:
+By default the layout replaces contiguous whitespace with a single whitespace character. Additional settings can be specified in the `compress_html` key inside the `_config.yml` file. The default configuration is:
 
 ~~~yaml
 compress_html:
@@ -105,16 +105,23 @@ compress_html:
 
 ## debugging
 
-A boolean value to turn on the debugging mode. If true, the layout creates a HTML comment `before` the compressed content. The comment contains a list of sizes during the compressing steps.
+A boolean value to turn on the debugging mode. If true, the layout creates a HTML table after the compressed content. The table contains the file size in bytes during the compressing steps.
 
 ~~~yaml
 compress_html:
   debugging: true
 ~~~
 
-This page itself is compressed in debugging mode for educational purposes only. Please don’t debug in public.
+The debugging table provides attributes for styling and reading. The `id` ends with build’s timestamp to be unique enough.
 
-The debugging comment is not affected by the `comments` option.
+~~~html
+<table
+  class="compress_html_debugging"
+  id="compress_html_debugging_YYYYMMDD"
+>
+~~~
+
+This page itself is compressed in debugging mode for educational purposes only. The [table](#compress_html_debugging_{{ site.time | date: "%Y%m%d" }}) is below. Please don’t debug in public.
 
 ### ignore.envs
 
