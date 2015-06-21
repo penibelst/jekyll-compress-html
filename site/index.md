@@ -18,8 +18,6 @@ A [Jekyll][jekyll] layout that compresses [HTML][html-spec]. At a glance:
 
 The layout is written in pure [Liquid][liquid], no plugins are required.
 
-The main reason for the compression is to [fight the space between inline block elements][3]. File size reduction is a welcome gain.
-
 ## Installation
 
 1. Get the [latest release][github-repo-latest]. Extract `compress.html` and copy it to your `_layouts`.
@@ -175,7 +173,6 @@ Take a look at project’s `test/source` and `test/expected` directories. They c
 [html-syntax]: https://html.spec.whatwg.org/multipage/syntax.html
 [html-tabular]: https://html.spec.whatwg.org/multipage/tables.html
 [liquid]: http://docs.shopify.com/themes/liquid-documentation/basics
-[3]: http://css-tricks.com/fighting-the-space-between-inline-block-elements/
 [github-repo]: https://github.com/penibelst/jekyll-compress-html
 [github-repo-latest]: https://github.com/penibelst/jekyll-compress-html/releases/latest
 [github-repo-gh-pages]: https://github.com/penibelst/jekyll-compress-html/tree/gh-pages
