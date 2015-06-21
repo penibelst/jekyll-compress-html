@@ -1,0 +1,6 @@
+time: "2015-06-19"
+compress_html:
+  clippings: all
+  endings: all
+  comments: ["<--", "-->"]
+  debugging: true

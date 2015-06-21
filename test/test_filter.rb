@@ -34,6 +34,11 @@ class TestCompressed < Minitest::Test
     assert_dir "comments"
   end
 
+  def test_debugging
+    jekyll_build ["_config.yml", "_config_debugging.yml"]
+    assert_dir "debugging"
+  end
+
   def test_ignore
     ENV["JEKYLL_ENV"] = "ignore"
     jekyll_build ["_config.yml", "_config_ignore.yml"]

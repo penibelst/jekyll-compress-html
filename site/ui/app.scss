@@ -46,3 +46,9 @@ td, th {
 .status {
   height: rem-calc(20);
 }
+
+/* debugging */
+
+table.compress_html_debugging tbody td:last-child {
+  text-align: right;
+}
