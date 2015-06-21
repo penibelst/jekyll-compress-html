@@ -10,7 +10,7 @@ BUILD_FILE = File.join(BUILD_DIR, "compress.html")
 directory BUILD_DIR
 file BUILD_FILE => FileList["src/compress.*", BUILD_DIR] do |bf|
   yaml = File.open("src/compress.yaml").read
-  liquid = File.open("src/compress.liquid").read.gsub(/\s+(?={)/, "").gsub(/{% comment %}[^{]+{% endcomment %}/, "")
+  liquid = File.open("src/compress.liquid").read.gsub(/\s+/, " ").gsub(/\s+(?={)|/, "").gsub(/{% comment %}[^{]+{% endcomment %}/, "").strip
 
   File.open bf.name, File::CREAT|File::WRONLY do |f|
     f.puts yaml, "", liquid

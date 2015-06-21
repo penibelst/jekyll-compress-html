@@ -82,20 +82,20 @@
 {% if _profile %}
   <table id="compress_html_profile_{{ site.time | date: "%Y%m%d" }}" class="compress_html_profile">
     <thead>
-    <tr><td>Step<td>Bytes
+    <tr> <td>Step <td>Bytes
     <tbody>
-    <tr><td>raw<td>{{ content | size }}
+    <tr> <td>raw <td>{{ content | size }}
   {% if _profile_endings %}
-    <tr><td>endings<td>{{ _profile_endings }}
+    <tr> <td>endings <td>{{ _profile_endings }}
   {% endif %}
   {% if _profile_collapse %}
-    <tr><td>collapse<td>{{ _profile_collapse }}
+    <tr> <td>collapse <td>{{ _profile_collapse }}
   {% endif %}
   {% if _profile_comments %}
-    <tr><td>comments<td>{{ _profile_comments }}
+    <tr> <td>comments <td>{{ _profile_comments }}
   {% endif %}
   {% if _profile_clippings %}
-    <tr><td>clippings<td>{{ _profile_clippings }}
+    <tr> <td>clippings <td>{{ _profile_clippings }}
   {% endif %}
   </table>
 {% endif %}
