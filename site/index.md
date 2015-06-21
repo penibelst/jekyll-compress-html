@@ -114,8 +114,8 @@ The debugging table provides attributes for styling and reading. The `id` ends w
 
 ~~~html
 <table
-  class="compress_html_debugging"
   id="compress_html_debugging_YYYYMMDD"
+  class="compress_html_debugging"
 >
 ~~~
 
