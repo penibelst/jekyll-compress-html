@@ -1,4 +1,3 @@
-require "minitest"
 require "minitest/autorun"
 
 class TestCompressed < Minitest::Test
@@ -34,9 +33,9 @@ class TestCompressed < Minitest::Test
     assert_dir "comments"
   end
 
-  def test_debugging
-    jekyll_build ["_config.yml", "_config_debugging.yml"]
-    assert_dir "debugging"
+  def test_profile
+    jekyll_build ["_config.yml", "_config_profile.yml"]
+    assert_dir "profile"
   end
 
   def test_ignore

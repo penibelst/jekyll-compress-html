@@ -29,8 +29,8 @@ task :performance => BUILD_FILE do
   end
 end
 
-CLEAN.include FileList["vnu*", "Gemfile.lock"]
-CLOBBER.include FileList["_build/*"]
+CLEAN.include FileList["vnu*", "Gemfile.lock", "**/_site"]
+CLOBBER.include FileList["_build/*", "_gh-pages"]
 
 namespace :site do
   task :build do

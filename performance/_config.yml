@@ -3,4 +3,4 @@ compress_html:
   clippings: [div]
   comments: ["<!-- ", " -->"]
   endings: [li, dt, dd, p, thead, tbody, tr, td, th]
-  debugging: true
+  profile: true

@@ -6,7 +6,7 @@
 {% comment %}Initialization{% endcomment %}
 
 {% capture _content %}{{ content }}{% endcapture %}
-{% assign _debugging = site.compress_html.debugging %}
+{% assign _profile = site.compress_html.profile or site.compress_html.debugging %}
 
 
 {% comment %}Remove end tags{% endcomment %}
@@ -20,8 +20,8 @@
   {% capture _end %}</{{ _element }}>{% endcapture %}
   {% assign _content = _content | remove: _end %}
 {% endfor %}
-{% if _debugging and _endings %}
-  {% assign _debugging_endings = _content | size | plus: 1 %}
+{% if _profile and _endings %}
+  {% assign _profile_endings = _content | size | plus: 1 %}
 {% endif %}
 
 
@@ -38,8 +38,8 @@
       {% capture _content %}{{ _content }}{{ _pres.last | split: " " | join: " " }}{% endcapture %}
     {% endcase %}
 {% endfor %}
-{% if _debugging %}
-  {% assign _debugging_collapse = _content | size | plus: 1 %}
+{% if _profile %}
+  {% assign _profile_collapse = _content | size | plus: 1 %}
 {% endif %}
 
 {% comment %}Remove comments{% endcomment %}
@@ -53,8 +53,8 @@
       {% assign _content = _content | remove: _comment %}
     {% endif %}
   {% endfor %}
-  {% if _debugging %}
-    {% assign _debugging_comments = _content | size | plus: 1 %}
+  {% if _profile %}
+    {% assign _profile_comments = _content | size | plus: 1 %}
   {% endif %}
 {% endif %}
 
@@ -70,8 +70,8 @@
   {% assign _edges = " <e;<e; </e>;</e>;</e> ;</e>" | replace: "e", _element | split: ";" %}
   {% assign _content = _content | replace: _edges[0], _edges[1] | replace: _edges[2], _edges[3] | replace: _edges[4], _edges[5] %}
 {% endfor %}
-{% if _debugging and _clippings %}
-  {% assign _debugging_clippings = _content | size | plus: 1 %}
+{% if _profile and _clippings %}
+  {% assign _profile_clippings = _content | size | plus: 1 %}
 {% endif %}
 
 
@@ -79,23 +79,23 @@
 
 {{ _content }}
 
-{% if _debugging %}
-  <table id="compress_html_debugging_{{ site.time | date: "%Y%m%d" }}" class="compress_html_debugging">
+{% if _profile %}
+  <table id="compress_html_profile_{{ site.time | date: "%Y%m%d" }}" class="compress_html_profile">
     <thead>
     <tr><td>Step<td>Bytes
     <tbody>
     <tr><td>raw<td>{{ content | size }}
-  {% if _debugging_endings %}
-    <tr><td>endings<td>{{ _debugging_endings }}
+  {% if _profile_endings %}
+    <tr><td>endings<td>{{ _profile_endings }}
   {% endif %}
-  {% if _debugging_collapse %}
-    <tr><td>collapse<td>{{ _debugging_collapse }}
+  {% if _profile_collapse %}
+    <tr><td>collapse<td>{{ _profile_collapse }}
   {% endif %}
-  {% if _debugging_comments %}
-    <tr><td>comments<td>{{ _debugging_comments }}
+  {% if _profile_comments %}
+    <tr><td>comments<td>{{ _profile_comments }}
   {% endif %}
-  {% if _debugging_clippings %}
-    <tr><td>clippings<td>{{ _debugging_clippings }}
+  {% if _profile_clippings %}
+    <tr><td>clippings<td>{{ _profile_clippings }}
   {% endif %}
   </table>
 {% endif %}
