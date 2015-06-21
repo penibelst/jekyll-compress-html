@@ -13,7 +13,7 @@ A [Jekyll][jekyll] layout that compresses [HTML][html-spec]. At a glance:
 * GitHub Pages compatible;
 * ignores development environments;
 * configurable affected elements;
-* debugging mode;
+* profile mode;
 * automatically tested.
 
 The layout is written in pure [Liquid][liquid], no plugins are required.
@@ -44,7 +44,7 @@ compress_html:
   clippings: []
   comments: []
   endings: []
-  debugging: false
+  profile: false
   ignore:
     envs: []
 ~~~
@@ -101,25 +101,25 @@ compress_html:
   endings: all
 ~~~
 
-## debugging
+## profile
 
-A boolean value to turn on the debugging mode. If true, the layout creates a HTML table after the compressed content. The table contains the file size in bytes during the compressing steps.
+A boolean value to turn on the profile mode. If true, the layout creates a HTML table after the compressed content. The table contains the file size in bytes during the compressing steps.
 
 ~~~yaml
 compress_html:
-  debugging: true
+  profile: true
 ~~~
 
-The debugging table provides attributes for styling and reading. The `id` ends with build’s timestamp to be unique enough.
+The profile table provides attributes for styling and reading. The `id` ends with build’s timestamp to be unique enough.
 
 ~~~html
 <table
-  id="compress_html_debugging_YYYYMMDD"
-  class="compress_html_debugging"
+  id="compress_html_profile_YYYYMMDD"
+  class="compress_html_profile"
 >
 ~~~
 
-This page itself is compressed in debugging mode for educational purposes only. The [table](#compress_html_debugging_{{ site.time | date: "%Y%m%d" }}) is below. Please don’t debug in public.
+This page itself is compressed in profile mode for educational purposes only. The [table](#compress_html_profile_{{ site.time | date: "%Y%m%d" }}) is below. Please don’t profile in public.
 
 ### ignore.envs
 
@@ -132,7 +132,7 @@ compress_html:
   clippings: all
   comments: ["<!-- ", " -->"]
   endings: all
-  debugging: true
+  profile: true
   ignore:
     envs: [local]
 ~~~
