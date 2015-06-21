@@ -13,11 +13,10 @@ A [Jekyll][jekyll] layout that compresses [HTML][html-spec]. At a glance:
 * GitHub Pages compatible;
 * ignores development environments;
 * configurable affected elements;
+* debugging mode;
 * automatically tested.
 
 The layout is written in pure [Liquid][liquid], no plugins are required.
-
-The main reason for the compression is to [fight the space between inline block elements][3]. File size reduction is a welcome gain.
 
 ## Installation
 
@@ -38,13 +37,14 @@ Now all your markup will be processed by the `compress` layout.
 
 ## Configuration
 
-By default the layout replaces contiguous whitespace with a single whitespace character. Additional settings can be specified in the `compress_html` key inside the `_config.yml` file:
+By default the layout replaces contiguous whitespace with a single whitespace character. Additional settings can be specified in the `compress_html` key inside the `_config.yml` file. The default configuration is:
 
 ~~~yaml
 compress_html:
   clippings: []
   comments: []
   endings: []
+  debugging: false
   ignore:
     envs: []
 ~~~
@@ -101,6 +101,26 @@ compress_html:
   endings: all
 ~~~
 
+## debugging
+
+A boolean value to turn on the debugging mode. If true, the layout creates a HTML table after the compressed content. The table contains the file size in bytes during the compressing steps.
+
+~~~yaml
+compress_html:
+  debugging: true
+~~~
+
+The debugging table provides attributes for styling and reading. The `id` ends with build’s timestamp to be unique enough.
+
+~~~html
+<table
+  class="compress_html_debugging"
+  id="compress_html_debugging_YYYYMMDD"
+>
+~~~
+
+This page itself is compressed in debugging mode for educational purposes only. The [table](#compress_html_debugging_{{ site.time | date: "%Y%m%d" }}) is below. Please don’t debug in public.
+
 ### ignore.envs
 
 An array of environments given by `ENV["JEKYLL_ENV"]` where the compress layout is ignored. This may be useful while developing a website.
@@ -112,6 +132,7 @@ compress_html:
   clippings: all
   comments: ["<!-- ", " -->"]
   endings: all
+  debugging: true
   ignore:
     envs: [local]
 ~~~
@@ -152,7 +173,6 @@ Take a look at project’s `test/source` and `test/expected` directories. They c
 [html-syntax]: https://html.spec.whatwg.org/multipage/syntax.html
 [html-tabular]: https://html.spec.whatwg.org/multipage/tables.html
 [liquid]: http://docs.shopify.com/themes/liquid-documentation/basics
-[3]: http://css-tricks.com/fighting-the-space-between-inline-block-elements/
 [github-repo]: https://github.com/penibelst/jekyll-compress-html
 [github-repo-latest]: https://github.com/penibelst/jekyll-compress-html/releases/latest
 [github-repo-gh-pages]: https://github.com/penibelst/jekyll-compress-html/tree/gh-pages
