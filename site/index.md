@@ -83,6 +83,8 @@ compress_html:
 
 Whitespaces around the tags prevent [conditional comments][cond] from being deleted.
 
+Use the shortcut `all` to remove all comments.
+
 ### endings
 
 An array of elements with [optional end tags][html-syntax]. These end tags will be removed.
