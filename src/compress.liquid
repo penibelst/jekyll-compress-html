@@ -44,12 +44,17 @@
 
 {% comment %}Remove comments{% endcomment %}
 
-{% if site.compress_html.comments.size == 2 %}
-  {% assign _comment_befores = _content | split: site.compress_html.comments.first %}
+{% if site.compress_html.comments == "all" %}
+  {% assign _comments = "<!-- -->" | split: " " %}
+{% else %}
+  {% assign _comments = site.compress_html.comments %}
+{% endif %}
+{% if _comments.size == 2 %}
+  {% assign _comment_befores = _content | split: _comments.first %}
   {% for _comment_before in _comment_befores %}
-    {% assign _comment_content = _comment_before | split: site.compress_html.comments.last | first %}
+    {% assign _comment_content = _comment_before | split: _comments.last | first %}
     {% if _comment_content %}
-      {% capture _comment %}{{ site.compress_html.comments.first }}{{ _comment_content }}{{ site.compress_html.comments.last }}{% endcapture %}
+      {% capture _comment %}{{ _comments.first }}{{ _comment_content }}{{ _comments.last }}{% endcapture %}
       {% assign _content = _content | remove: _comment %}
     {% endif %}
   {% endfor %}
