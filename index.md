@@ -83,6 +83,8 @@ compress_html:
 
 Whitespaces around the tags prevent [conditional comments][cond] from being deleted.
 
+Use the shortcut `all` to remove all comments.
+
 ### endings
 
 An array of elements with [optional end tags][html-syntax]. These end tags will be removed.
@@ -162,6 +164,7 @@ Take a look at project’s `test/source` and `test/expected` directories. They c
 * _[A pure Liquid way to compress HTML][hutchison-review]_ by David Hutchison
 * _[I am a Jekyll God][braithwaite-review]_ by Garth Braithwaite
 * _[Compressing HTML in Jekyll without a plugin][knight-review]_ by Rich Knight
+* _[Generating my static site with Jekyll and GitHub Pages][thorne-review]_ by Michael Thorne
 
 ----
 
@@ -181,3 +184,4 @@ Take a look at project’s `test/source` and `test/expected` directories. They c
 [hutchison-review]: http://www.devwithimagination.com/2014/06/12/jekyll-compress-a-pure-liquid-way-to-compress-html/
 [knight-review]: http://rich-knight.com/articles/compressing-html-in-jekyll/
 [braithwaite-review]: http://garthdb.com/writings/i-am-a-jekyll-god/
+[thorne-review]: http://www.userx.co.za/journal/generating-my-static-site-with-jekyll-and-github-pages/

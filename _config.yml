@@ -3,6 +3,6 @@ sass:
   style: compressed
 compress_html:
   clippings: all
-  comments: ["<!-- ", " -->"]
+  comments: all
   endings: all
   profile: true
