@@ -6,7 +6,7 @@
 {% comment %}Initialization{% endcomment %}
 
 {% capture _content %}{{ content }}{% endcapture %}
-{% assign _profile = site.compress_html.profile or site.compress_html.debugging %}
+{% assign _profile = site.compress_html.profile %}
 
 
 {% comment %}Remove end tags{% endcomment %}
