@@ -7,7 +7,7 @@ env:
   matrix:
     - JEKYLL_VERSION=2.1.0
     - JEKYLL_VERSION=2.0
-    - JEKYLL_VERSION=3.0.0.pre.beta7
+    - JEKYLL_VERSION=3.0
 before_script:
   - bundle exec jekyll --version
 script:
