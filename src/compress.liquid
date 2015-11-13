@@ -52,10 +52,13 @@
 {% if _comments.size == 2 %}
   {% assign _comment_befores = _content | split: _comments.first %}
   {% for _comment_before in _comment_befores %}
-    {% assign _comment_content = _comment_before | split: _comments.last | first %}
-    {% if _comment_content %}
-      {% capture _comment %}{{ _comments.first }}{{ _comment_content }}{{ _comments.last }}{% endcapture %}
-      {% assign _content = _content | remove: _comment %}
+    {% assign _comment_split = _comment_before | split: " " %}
+    {% if _comment_split.first != "[if" or site.compress_html.remove_conditional_comments or _comments.first != "<!--" %}
+      {% assign _comment_content = _comment_before | split: _comments.last | first %}
+      {% if _comment_content %}
+        {% capture _comment %}{{ _comments.first }}{{ _comment_content }}{{ _comments.last }}{% endcapture %}
+        {% assign _content = _content | remove: _comment %}
+      {% endif %}
     {% endif %}
   {% endfor %}
   {% if _profile %}
