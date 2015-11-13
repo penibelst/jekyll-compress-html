@@ -25,23 +25,6 @@
 {% endif %}
 
 
-{% comment %}Collapse whitespace outside of <pre>{% endcomment %}
-
-{% assign _pre_befores = _content | split: "<pre" %}
-{% assign _content = "" %}
-{% for _pre_before in _pre_befores %}
-  {% assign _pres = _pre_before | split: "</pre>" %}
-    {% case _pres.size %}
-    {% when 2 %}
-      {% capture _content %}{{ _content }}<pre{{ _pres.first }}</pre>{{ _pres.last | split: " " | join: " " }}{% endcapture %}
-    {% when 1 %}
-      {% capture _content %}{{ _content }}{{ _pres.last | split: " " | join: " " }}{% endcapture %}
-    {% endcase %}
-{% endfor %}
-{% if _profile %}
-  {% assign _profile_collapse = _content | size | plus: 1 %}
-{% endif %}
-
 {% comment %}Remove comments{% endcomment %}
 
 {% if site.compress_html.comments == "all" %}
@@ -64,6 +47,24 @@
   {% if _profile %}
     {% assign _profile_comments = _content | size | plus: 1 %}
   {% endif %}
+{% endif %}
+
+
+{% comment %}Collapse whitespace outside of <pre>{% endcomment %}
+
+{% assign _pre_befores = _content | split: "<pre" %}
+{% assign _content = "" %}
+{% for _pre_before in _pre_befores %}
+  {% assign _pres = _pre_before | split: "</pre>" %}
+    {% case _pres.size %}
+    {% when 2 %}
+      {% capture _content %}{{ _content }}<pre{{ _pres.first }}</pre>{{ _pres.last | split: " " | join: " " }}{% endcapture %}
+    {% when 1 %}
+      {% capture _content %}{{ _content }}{{ _pres.last | split: " " | join: " " }}{% endcapture %}
+    {% endcase %}
+{% endfor %}
+{% if _profile %}
+  {% assign _profile_collapse = _content | size | plus: 1 %}
 {% endif %}
 
 
@@ -96,11 +97,11 @@
   {% if _profile_endings %}
     <tr> <td>endings <td>{{ _profile_endings }}
   {% endif %}
-  {% if _profile_collapse %}
-    <tr> <td>collapse <td>{{ _profile_collapse }}
-  {% endif %}
   {% if _profile_comments %}
     <tr> <td>comments <td>{{ _profile_comments }}
+  {% endif %}
+  {% if _profile_collapse %}
+    <tr> <td>collapse <td>{{ _profile_collapse }}
   {% endif %}
   {% if _profile_clippings %}
     <tr> <td>clippings <td>{{ _profile_clippings }}
