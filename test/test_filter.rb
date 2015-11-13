@@ -38,6 +38,11 @@ class TestCompressed < Minitest::Test
     assert_dir "conditional_remove"
   end
 
+  def test_human_readable
+    jekyll_build ["_config.yml", "_config_human_readable.yml"]
+    assert_dir "human_readable"
+  end
+
   def test_profile
     jekyll_build ["_config.yml", "_config_profile.yml"]
     assert_dir "profile"
