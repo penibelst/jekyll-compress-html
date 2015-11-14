@@ -55,13 +55,12 @@
 {% assign _pre_befores = _content | split: "<pre" %}
 {% assign _content = "" %}
 {% for _pre_before in _pre_befores %}
-  {% assign _pres = _pre_before | split: "</pre>" %}
-    {% case _pres.size %}
-    {% when 2 %}
-      {% capture _content %}{{ _content }}<pre{{ _pres.first }}</pre>{{ _pres.last | split: " " | join: " " }}{% endcapture %}
-    {% when 1 %}
-      {% capture _content %}{{ _content }}{{ _pres.last | split: " " | join: " " }}{% endcapture %}
-    {% endcase %}
+  {% assign _pres = _pre_before | split: "</pre" %}
+  {% capture _content %}
+    {{ _content }}
+    {% if _pres.size == 2 %}<pre{{ _pres.first }}</pre{% endif %}
+    {% if _pres.size != 0 %}{{ _pres.last | split: " " | join: " " }}{% endif %}
+  {% endcapture %}
 {% endfor %}
 {% if _profile %}
   {% assign _profile_collapse = _content | size | plus: 1 %}
