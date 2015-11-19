@@ -12,7 +12,7 @@ file BUILD_FILE => FileList["src/compress.*", BUILD_DIR] do |bf|
   yaml = File.open("src/compress.yaml").read
   liquid = File.open("src/compress.liquid").read.gsub(/\s+/, " ").gsub(/\s+(?={)|/, "").gsub(/{% comment %}[^{]+{% endcomment %}/, "").strip
 
-  File.open bf.name, File::CREAT|File::WRONLY do |f|
+  File.open bf.name, 'w' do |f|
     f.puts yaml, "", liquid
   end
 end
