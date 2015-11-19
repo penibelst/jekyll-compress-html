@@ -37,16 +37,17 @@ Now all your markup will be processed by the `compress` layout.
 
 ## Configuration
 
-By default the layout replaces contiguous whitespace with a single whitespace character. Additional settings can be specified in the `compress_html` key inside the `_config.yml` file. The default configuration is:
+By default the layout replaces contiguous whitespace with a single character `SPACE`. Additional settings can be specified in the `compress_html` key inside the `_config.yml` file. The default configuration is:
 
 ~~~yaml
 compress_html:
   clippings: []
   comments: []
   endings: []
-  profile: false
   ignore:
     envs: []
+    whitespaces: []
+  profile: false
 ~~~
 
 ### clippings
@@ -127,6 +128,24 @@ This page itself is compressed in profile mode for educational purposes only. Th
 
 An array of environments given by `ENV["JEKYLL_ENV"]` where the compress layout is ignored. This may be useful while developing a website.
 
+### ignore.whitespaces
+
+An array of whitespace characters as named in the Unicode. This may be useful to make the output more human readable. Available values:
+
+* SPACE
+* LINE FEED
+* CHARACTER TABULATION
+
+If `SPACE` is ignored, other whitespaces collapse to `LINE FEED`.
+
+Example:
+
+~~~yaml
+compress_html:
+  ignore:
+    whitespaces: [CHARACTER TABULATION, SPACE]
+~~~
+
 ### Full-blown sample
 
 ~~~yaml
@@ -134,9 +153,10 @@ compress_html:
   clippings: all
   comments: ["<!-- ", " -->"]
   endings: all
-  profile: true
   ignore:
     envs: [local]
+    whitespaces: [LINE FEED]
+  profile: true
 ~~~
 
 ## Restrictions
