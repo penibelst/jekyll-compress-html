@@ -1,0 +1,38 @@
+---
+layout: compress
+---
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+
+    <title>
+        A test of human
+        readable compression
+    </title>
+</head>
+
+<body>
+
+    <ul>
+        {% for i in (1..10) %}
+            <li>{{ i }}</li>
+            <!--{{ i }}-->
+        {% endfor %}
+    </ul>
+
+    <pre>
+	
+        These newlines should be kept
+        
+        See?
+
+    </pre><pre>
+    
+    </pre>
+
+</body>
+
+</html>

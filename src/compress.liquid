@@ -1,3 +1,5 @@
+{% endcapture %}
+
 {% if site.compress_html.ignore.envs contains jekyll.environment %}
   {{ content }}
 {% else %}
@@ -25,23 +27,6 @@
 {% endif %}
 
 
-{% comment %}Collapse whitespace outside of <pre>{% endcomment %}
-
-{% assign _pre_befores = _content | split: "<pre" %}
-{% assign _content = "" %}
-{% for _pre_before in _pre_befores %}
-  {% assign _pres = _pre_before | split: "</pre>" %}
-    {% case _pres.size %}
-    {% when 2 %}
-      {% capture _content %}{{ _content }}<pre{{ _pres.first }}</pre>{{ _pres.last | split: " " | join: " " }}{% endcapture %}
-    {% when 1 %}
-      {% capture _content %}{{ _content }}{{ _pres.last | split: " " | join: " " }}{% endcapture %}
-    {% endcase %}
-{% endfor %}
-{% if _profile %}
-  {% assign _profile_collapse = _content | size | plus: 1 %}
-{% endif %}
-
 {% comment %}Remove comments{% endcomment %}
 
 {% if site.compress_html.comments == "all" %}
@@ -52,10 +37,13 @@
 {% if _comments.size == 2 %}
   {% assign _comment_befores = _content | split: _comments.first %}
   {% for _comment_before in _comment_befores %}
-    {% assign _comment_content = _comment_before | split: _comments.last | first %}
-    {% if _comment_content %}
-      {% capture _comment %}{{ _comments.first }}{{ _comment_content }}{{ _comments.last }}{% endcapture %}
-      {% assign _content = _content | remove: _comment %}
+    {% assign _comment_split = _comment_before | split: " " %}
+    {% if _comment_split.first != "[if" or site.compress_html.remove_conditional_comments or _comments.first != "<!--" %}
+      {% assign _comment_content = _comment_before | split: _comments.last | first %}
+      {% if _comment_content %}
+        {% capture _comment %}{{ _comments.first }}{{ _comment_content }}{{ _comments.last }}{% endcapture %}
+        {% assign _content = _content | remove: _comment %}
+      {% endif %}
     {% endif %}
   {% endfor %}
   {% if _profile %}
@@ -64,20 +52,58 @@
 {% endif %}
 
 
+{% comment %}Collapse whitespace outside of <pre>{% endcomment %}
+
+{% assign _pre_befores = _content | split: "<pre" %}
+{% assign _content = "" %}
+{% for _pre_before in _pre_befores %}
+  {% assign _pres = _pre_before | split: "</pre" %}
+  {% capture _content %}
+    {{ _content }}
+    {% if site.compress_html.human_readable %}
+      {% if _pres.size == 2 %}{{ _nl }}<pre{{ _pres.first }}</pre{% endif %}
+      {% if _pres.size != 0 %}
+        {% assign _hadaline = false %}
+        {% assign _lines = _pres.last | split: _nl %}
+        {% for _line in _lines %}
+          {% capture _line2 %}{{ _line | split: " " | join: " " }}{% endcapture %}
+          {% unless _line2 == empty %}
+            {% if _hadaline %}
+              {{ _nl }}
+            {% else %}
+              {% assign _hadaline = true %}
+            {% endif %}
+            {{ _line | rstrip }}
+          {% endunless %}
+        {% endfor %}
+      {% endif %}
+    {% else %}
+      {% if _pres.size == 2 %}<pre{{ _pres.first }}</pre{% endif %}
+      {% if _pres.size != 0 %}{{ _pres.last | split: " " | join: " " }}{% endif %}
+    {% endif %}
+  {% endcapture %}
+{% endfor %}
+{% if _profile %}
+  {% assign _profile_collapse = _content | size | plus: 1 %}
+{% endif %}
+
+
 {% comment %}Clip whitespace around elements{% endcomment %}
 
-{% if site.compress_html.clippings == "all" %}
-  {% assign _clippings = "html head title base link meta style body article section nav aside h1 h2 h3 h4 h5 h6 hgroup header footer address p hr blockquote ol ul li dl dt dd figure figcaption main div table caption colgroup col tbody thead tfoot tr td th" | split: " " %}
-{% else %}
-  {% assign _clippings = site.compress_html.clippings %}
-{% endif %}
-{% for _element in _clippings %}
-  {% assign _edges = " <e;<e; </e>;</e>;</e> ;</e>" | replace: "e", _element | split: ";" %}
-  {% assign _content = _content | replace: _edges[0], _edges[1] | replace: _edges[2], _edges[3] | replace: _edges[4], _edges[5] %}
-{% endfor %}
-{% if _profile and _clippings %}
-  {% assign _profile_clippings = _content | size | plus: 1 %}
-{% endif %}
+{% unless site.compress_html.human_readable %}
+  {% if site.compress_html.clippings == "all" %}
+    {% assign _clippings = "html head title base link meta style body article section nav aside h1 h2 h3 h4 h5 h6 hgroup header footer address p hr blockquote ol ul li dl dt dd figure figcaption main div table caption colgroup col tbody thead tfoot tr td th" | split: " " %}
+  {% else %}
+    {% assign _clippings = site.compress_html.clippings %}
+  {% endif %}
+  {% for _element in _clippings %}
+    {% assign _edges = " <e;<e; </e>;</e>;</e> ;</e>" | replace: "e", _element | split: ";" %}
+    {% assign _content = _content | replace: _edges[0], _edges[1] | replace: _edges[2], _edges[3] | replace: _edges[4], _edges[5] %}
+  {% endfor %}
+  {% if _profile and _clippings %}
+    {% assign _profile_clippings = _content | size | plus: 1 %}
+  {% endif %}
+{% endunless %}
 
 
 {% comment %}Output{% endcomment %}
@@ -93,11 +119,11 @@
   {% if _profile_endings %}
     <tr> <td>endings <td>{{ _profile_endings }}
   {% endif %}
-  {% if _profile_collapse %}
-    <tr> <td>collapse <td>{{ _profile_collapse }}
-  {% endif %}
   {% if _profile_comments %}
     <tr> <td>comments <td>{{ _profile_comments }}
+  {% endif %}
+  {% if _profile_collapse %}
+    <tr> <td>collapse <td>{{ _profile_collapse }}
   {% endif %}
   {% if _profile_clippings %}
     <tr> <td>clippings <td>{{ _profile_clippings }}

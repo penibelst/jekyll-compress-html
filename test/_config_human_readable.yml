@@ -1,2 +1,3 @@
 compress_html:
+  human_readable: true
   comments: all
