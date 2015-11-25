@@ -30,27 +30,27 @@
 {% if site.compress_html.ignore.whitespaces %}
   {% assign _random = site.time | date: "%s%N" %}
   {% if site.compress_html.ignore.whitespaces contains "SPACE" %}
-    {% assign _ignore_space = "_SPACE" %}
-    {% assign _freeze_space = "space" | append: _random %}
-    {% assign _join = "_LINE_FEED" %}
+    {% capture _ignore_space %}_SPACE{% endcapture %}
+    {% capture _freeze_space %}space{{ _random }}{% endcapture %}
+    {% capture _join %}_LINE_FEED{% endcapture %}
   {% else %}
-    {% assign _ignore_space = "" %}
-    {% assign _freeze_space = "" %}
-    {% assign _join = "_SPACE" %}
+    {% capture _ignore_space %}{% endcapture %}
+    {% capture _freeze_space %}{% endcapture %}
+    {% capture _join %}_SPACE{% endcapture %}
   {% endif %}
   {% if site.compress_html.ignore.whitespaces contains "LINE FEED" %}
-    {% assign _ignore_line_feed = "_LINE_FEED" %}
-    {% assign _freeze_line_feed = "line_feed" | append: _random %}
+    {% capture _ignore_line_feed %}_LINE_FEED{% endcapture %}
+    {% capture _freeze_line_feed %}line_feed{{ _random }}{% endcapture %}
   {% else %}
-    {% assign _ignore_line_feed = "" %}
-    {% assign _freeze_line_feed = "" %}
+    {% capture _ignore_line_feed %}{% endcapture %}
+    {% capture _freeze_line_feed %}{% endcapture %}
   {% endif %}
   {% if site.compress_html.ignore.whitespaces contains "CHARACTER TABULATION" %}
-    {% assign _ignore_character_tabulation = "_CHARACTER_TABULATION" %}
-    {% assign _freeze_character_tabulation = "character_tabulation" | append: _random %}
+    {% capture _ignore_character_tabulation %}_CHARACTER_TABULATION{% endcapture %}
+    {% capture _freeze_character_tabulation %}character_tabulation{{ _random }}{% endcapture %}
   {% else %}
-    {% assign _ignore_character_tabulation = "" %}
-    {% assign _freeze_character_tabulation = "" %}
+    {% capture _ignore_character_tabulation %}{% endcapture %}
+    {% capture _freeze_character_tabulation %}{% endcapture %}
   {% endif %}
 {% endif %}
 
