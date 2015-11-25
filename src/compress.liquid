@@ -34,23 +34,23 @@
     {% capture _freeze_space %}space{{ _random }}{% endcapture %}
     {% capture _join %}_LINE_FEED{% endcapture %}
   {% else %}
-    {% capture _ignore_space %}{% endcapture %}
-    {% capture _freeze_space %}{% endcapture %}
+    {% capture _ignore_space %}_FULL_STOP{% endcapture %}
+    {% capture _freeze_space %}{{ _ignore_space }}{% endcapture %}
     {% capture _join %}_SPACE{% endcapture %}
   {% endif %}
   {% if site.compress_html.ignore.whitespaces contains "LINE FEED" %}
     {% capture _ignore_line_feed %}_LINE_FEED{% endcapture %}
     {% capture _freeze_line_feed %}line_feed{{ _random }}{% endcapture %}
   {% else %}
-    {% capture _ignore_line_feed %}{% endcapture %}
-    {% capture _freeze_line_feed %}{% endcapture %}
+    {% capture _ignore_line_feed %}_FULL_STOP{% endcapture %}
+    {% capture _freeze_line_feed %}{{ _ignore_line_feed }}{% endcapture %}
   {% endif %}
   {% if site.compress_html.ignore.whitespaces contains "CHARACTER TABULATION" %}
     {% capture _ignore_character_tabulation %}_CHARACTER_TABULATION{% endcapture %}
     {% capture _freeze_character_tabulation %}character_tabulation{{ _random }}{% endcapture %}
   {% else %}
-    {% capture _ignore_character_tabulation %}{% endcapture %}
-    {% capture _freeze_character_tabulation %}{% endcapture %}
+    {% capture _ignore_character_tabulation %}_FULL_STOP{% endcapture %}
+    {% capture _freeze_character_tabulation %}{{ _ignore_character_tabulation }}{% endcapture %}
   {% endif %}
 {% endif %}
 
