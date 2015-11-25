@@ -27,16 +27,62 @@
 
 {% comment %}Collapse whitespace outside of <pre>{% endcomment %}
 
+{% if site.compress_html.ignore.whitespaces %}
+  {% assign _random = site.time | date: "%s%N" %}
+  {% if site.compress_html.ignore.whitespaces contains "SPACE" %}
+    {% assign _ignore_space = "_SPACE" %}
+    {% assign _freeze_space = "space" | append: _random %}
+    {% assign _join = "_LINE_FEED" %}
+  {% else %}
+    {% assign _ignore_space = "" %}
+    {% assign _freeze_space = "" %}
+    {% assign _join = "_SPACE" %}
+  {% endif %}
+  {% if site.compress_html.ignore.whitespaces contains "LINE FEED" %}
+    {% assign _ignore_line_feed = "_LINE_FEED" %}
+    {% assign _freeze_line_feed = "line_feed" | append: _random %}
+  {% else %}
+    {% assign _ignore_line_feed = "" %}
+    {% assign _freeze_line_feed = "" %}
+  {% endif %}
+  {% if site.compress_html.ignore.whitespaces contains "CHARACTER TABULATION" %}
+    {% assign _ignore_character_tabulation = "_CHARACTER_TABULATION" %}
+    {% assign _freeze_character_tabulation = "character_tabulation" | append: _random %}
+  {% else %}
+    {% assign _ignore_character_tabulation = "" %}
+    {% assign _freeze_character_tabulation = "" %}
+  {% endif %}
+{% endif %}
+
 {% assign _pre_befores = _content | split: "<pre" %}
 {% assign _content = "" %}
 {% for _pre_before in _pre_befores %}
   {% assign _pres = _pre_before | split: "</pre>" %}
-    {% case _pres.size %}
-    {% when 2 %}
-      {% capture _content %}{{ _content }}<pre{{ _pres.first }}</pre>{{ _pres.last | split: " " | join: " " }}{% endcapture %}
-    {% when 1 %}
-      {% capture _content %}{{ _content }}{{ _pres.last | split: " " | join: " " }}{% endcapture %}
-    {% endcase %}
+
+  {% if site.compress_html.ignore.whitespaces %}
+    {% assign _pres_after =  _pres.last
+      | replace: _ignore_space,                _freeze_space
+      | replace: _ignore_line_feed,            _freeze_line_feed
+      | replace: _ignore_character_tabulation, _freeze_character_tabulation
+      | split: "_SPACE"
+      | join: _join
+      | replace: _freeze_character_tabulation, _ignore_character_tabulation
+      | replace: _freeze_line_feed,            _ignore_line_feed
+      | replace: _freeze_space,                _ignore_space
+    %}
+  {% else %}
+    {% assign _pres_after =  _pres.last
+      | split: "_SPACE"
+      | join: "_SPACE"
+    %}
+  {% endif %}
+
+  {% case _pres.size %}
+  {% when 2 %}
+    {% capture _content %}{{ _content }}<pre{{ _pres.first }}</pre>{{ _pres_after }}{% endcapture %}
+  {% when 1 %}
+    {% capture _content %}{{ _content }}{{ _pres_after }}{% endcapture %}
+  {% endcase %}
 {% endfor %}
 {% if _profile %}
   {% assign _profile_collapse = _content | size | plus: 1 %}

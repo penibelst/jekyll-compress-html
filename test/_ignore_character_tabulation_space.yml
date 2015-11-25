@@ -1,0 +1,3 @@
+compress_html:
+  ignore:
+    whitespaces: [CHARACTER TABULATION, SPACE]
