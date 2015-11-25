@@ -132,9 +132,9 @@ An array of environments given by `ENV["JEKYLL_ENV"]` where the compress layout 
 
 An array of whitespace characters as named in the Unicode. This may be useful to make the output more human readable. Available values:
 
-* SPACE
-* LINE FEED
-* CHARACTER TABULATION
+* `SPACE`
+* `LINE FEED`
+* `CHARACTER TABULATION`
 
 If `SPACE` is ignored, other whitespaces collapse to `LINE FEED`.
 
