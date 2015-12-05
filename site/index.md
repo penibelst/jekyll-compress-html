@@ -114,7 +114,7 @@ Example:
 
 ~~~yaml
 compress_html:
-  endings: [html, head, body]
+  startings: [html, head, body]
 ~~~
 
 ## profile
