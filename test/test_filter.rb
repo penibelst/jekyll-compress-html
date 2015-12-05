@@ -45,6 +45,11 @@ class TestCompressed < Minitest::Test
     ENV["JEKYLL_ENV"] = nil
   end
 
+  def test_ignore_character_tabulation_space
+    jekyll_build ["_config.yml", "_ignore_character_tabulation_space.yml"]
+    assert_dir "ignore_character_tabulation_space"
+  end
+
   private
 
   EXPECTED_DIR = File.join File.dirname(__FILE__), "expected"

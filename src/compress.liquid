@@ -27,16 +27,64 @@
 
 {% comment %}Collapse whitespace outside of <pre>{% endcomment %}
 
+{% if site.compress_html.ignore.whitespaces %}
+  {% assign _random = site.time | date: "%s%N" %}
+  {% if site.compress_html.ignore.whitespaces contains "SPACE" %}
+    {% capture _ignore_space %}_SPACE{% endcapture %}
+    {% capture _freeze_space %}space{{ _random }}{% endcapture %}
+    {% capture _join %}_LINE_FEED{% endcapture %}
+  {% else %}
+    {% capture _ignore_space %}_FULL_STOP{% endcapture %}
+    {% capture _freeze_space %}{{ _ignore_space }}{% endcapture %}
+    {% capture _join %}_SPACE{% endcapture %}
+  {% endif %}
+  {% if site.compress_html.ignore.whitespaces contains "LINE FEED" %}
+    {% capture _ignore_line_feed %}_LINE_FEED{% endcapture %}
+    {% capture _freeze_line_feed %}line_feed{{ _random }}{% endcapture %}
+  {% else %}
+    {% capture _ignore_line_feed %}_FULL_STOP{% endcapture %}
+    {% capture _freeze_line_feed %}{{ _ignore_line_feed }}{% endcapture %}
+  {% endif %}
+  {% if site.compress_html.ignore.whitespaces contains "CHARACTER TABULATION" %}
+    {% capture _ignore_character_tabulation %}_CHARACTER_TABULATION{% endcapture %}
+    {% capture _freeze_character_tabulation %}character_tabulation{{ _random }}{% endcapture %}
+  {% else %}
+    {% capture _ignore_character_tabulation %}_FULL_STOP{% endcapture %}
+    {% capture _freeze_character_tabulation %}{{ _ignore_character_tabulation }}{% endcapture %}
+  {% endif %}
+{% endif %}
+
 {% assign _pre_befores = _content | split: "<pre" %}
 {% assign _content = "" %}
 {% for _pre_before in _pre_befores %}
   {% assign _pres = _pre_before | split: "</pre>" %}
-    {% case _pres.size %}
-    {% when 2 %}
-      {% capture _content %}{{ _content }}<pre{{ _pres.first }}</pre>{{ _pres.last | split: " " | join: " " }}{% endcapture %}
-    {% when 1 %}
-      {% capture _content %}{{ _content }}{{ _pres.last | split: " " | join: " " }}{% endcapture %}
-    {% endcase %}
+
+  {% if _pres.size != 0 %}
+    {% if site.compress_html.ignore.whitespaces %}
+      {% assign _pres_after =  _pres.last
+        | replace: _ignore_space,                _freeze_space
+        | replace: _ignore_line_feed,            _freeze_line_feed
+        | replace: _ignore_character_tabulation, _freeze_character_tabulation
+        | split: "_SPACE"
+        | join: _join
+        | replace: _freeze_character_tabulation, _ignore_character_tabulation
+        | replace: _freeze_line_feed,            _ignore_line_feed
+        | replace: _freeze_space,                _ignore_space
+      %}
+    {% else %}
+      {% assign _pres_after = _pres.last
+        | split: "_SPACE"
+        | join: "_SPACE"
+      %}
+    {% endif %}
+  {% endif %}
+
+  {% case _pres.size %}
+  {% when 2 %}
+    {% capture _content %}{{ _content }}<pre{{ _pres.first }}</pre>{{ _pres_after }}{% endcapture %}
+  {% when 1 %}
+    {% capture _content %}{{ _content }}{{ _pres_after }}{% endcapture %}
+  {% endcase %}
 {% endfor %}
 {% if _profile %}
   {% assign _profile_collapse = _content | size | plus: 1 %}
