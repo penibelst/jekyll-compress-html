@@ -6,4 +6,4 @@ compress_html:
   comments: all
   endings: all
   profile: true
-  startings: [html, head, body]
+  startings: [head, body]
