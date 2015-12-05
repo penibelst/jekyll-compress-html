@@ -59,22 +59,24 @@
 {% for _pre_before in _pre_befores %}
   {% assign _pres = _pre_before | split: "</pre>" %}
 
-  {% if site.compress_html.ignore.whitespaces %}
-    {% assign _pres_after =  _pres.last
-      | replace: _ignore_space,                _freeze_space
-      | replace: _ignore_line_feed,            _freeze_line_feed
-      | replace: _ignore_character_tabulation, _freeze_character_tabulation
-      | split: "_SPACE"
-      | join: _join
-      | replace: _freeze_character_tabulation, _ignore_character_tabulation
-      | replace: _freeze_line_feed,            _ignore_line_feed
-      | replace: _freeze_space,                _ignore_space
-    %}
-  {% else %}
-    {% assign _pres_after =  _pres.last
-      | split: "_SPACE"
-      | join: "_SPACE"
-    %}
+  {% if _pres.size != 0 %}
+    {% if site.compress_html.ignore.whitespaces %}
+      {% assign _pres_after =  _pres.last
+        | replace: _ignore_space,                _freeze_space
+        | replace: _ignore_line_feed,            _freeze_line_feed
+        | replace: _ignore_character_tabulation, _freeze_character_tabulation
+        | split: "_SPACE"
+        | join: _join
+        | replace: _freeze_character_tabulation, _ignore_character_tabulation
+        | replace: _freeze_line_feed,            _ignore_line_feed
+        | replace: _freeze_space,                _ignore_space
+      %}
+    {% else %}
+      {% assign _pres_after = _pres.last
+        | split: "_SPACE"
+        | join: "_SPACE"
+      %}
+    {% endif %}
   {% endif %}
 
   {% case _pres.size %}
