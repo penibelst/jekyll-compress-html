@@ -25,6 +25,17 @@
 {% endif %}
 
 
+{% comment %}Remove start tags{% endcomment %}
+
+{% for _element in site.compress_html.startings %}
+  {% capture _start %}<{{ _element }}>{% endcapture %}
+  {% assign _content = _content | remove: _start %}
+{% endfor %}
+{% if _profile and site.compress_html.startings %}
+  {% assign _profile_startings = _content | size | plus: 1 %}
+{% endif %}
+
+
 {% comment %}Collapse whitespace outside of <pre>{% endcomment %}
 
 {% if site.compress_html.ignore.whitespaces %}
@@ -140,6 +151,9 @@
     <tr> <td>raw <td>{{ content | size }}
   {% if _profile_endings %}
     <tr> <td>endings <td>{{ _profile_endings }}
+  {% endif %}
+  {% if _profile_startings %}
+    <tr> <td>startings <td>{{ _profile_startings }}
   {% endif %}
   {% if _profile_collapse %}
     <tr> <td>collapse <td>{{ _profile_collapse }}
