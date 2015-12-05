@@ -17,7 +17,6 @@ file BUILD_FILE => FileList["src/compress.*", BUILD_DIR] do |bf|
     .gsub("_CHARACTER_TABULATION", "\t")
     .gsub("_LINE_FEED", "\n")
     .gsub("_SPACE", "\s")
-    .gsub("_FULL_STOP", ".")
     .strip
 
   File.open bf.name, 'w' do |f|
