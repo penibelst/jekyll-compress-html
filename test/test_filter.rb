@@ -50,6 +50,11 @@ class TestCompressed < Minitest::Test
     assert_dir "ignore_character_tabulation_space"
   end
 
+  def test_startings
+    jekyll_build ["_config.yml", "_startings.yml"]
+    assert_dir "startings"
+  end
+
   private
 
   EXPECTED_DIR = File.join File.dirname(__FILE__), "expected"
