@@ -5,3 +5,5 @@ _site/
 vnu.zip
 vnu/
 _gh-pages/
+.jekyll-metadata
+*~
