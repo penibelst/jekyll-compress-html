@@ -8,6 +8,7 @@ A [Jekyll][jekyll] layout that compresses [HTML][html-spec]. At a glance:
 
 * removes unnecessary whitespace;
 * removes optional end tags;
+* removes optional start tags;
 * removes comments;
 * preserves whitespace within `<pre>`;
 * GitHub Pages compatible;
@@ -48,6 +49,7 @@ compress_html:
     envs: []
     whitespaces: []
   profile: false
+  startings: []
 ~~~
 
 ### clippings
@@ -104,6 +106,17 @@ compress_html:
   endings: all
 ~~~
 
+### startings
+
+An array of elements with [optional start tags][html-syntax]. These start tags will be removed.
+
+Example:
+
+~~~yaml
+compress_html:
+  endings: [html, head, body]
+~~~
+
 ## profile
 
 A boolean value to turn on the profile mode. If true, the layout creates a HTML table after the compressed content. The table contains the file size in bytes during the compressing steps.
@@ -157,6 +170,7 @@ compress_html:
     envs: [local]
     whitespaces: [LINE FEED]
   profile: true
+  startings: [html, head, body]
 ~~~
 
 ## Restrictions
