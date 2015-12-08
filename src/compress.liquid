@@ -90,12 +90,11 @@
     {% endif %}
   {% endif %}
 
-  {% case _pres.size %}
-  {% when 2 %}
-    {% capture _content %}{{ _content }}<pre{{ _pres.first }}</pre>{{ _pres_after }}{% endcapture %}
-  {% when 1 %}
-    {% capture _content %}{{ _content }}{{ _pres_after }}{% endcapture %}
-  {% endcase %}
+  {% capture _content %}
+    {{ _content }}
+    {% if _pre_before contains "</pre>" %}<pre{{ _pres.first }}</pre>{% endif %}
+    {% unless _pre_before contains "</pre>" and _pres.size == 1 %}{{ _pres_after }}{% endunless %}
+  {% endcapture %}
 {% endfor %}
 {% if _profile %}
   {% assign _profile_collapse = _content | size | plus: 1 %}
