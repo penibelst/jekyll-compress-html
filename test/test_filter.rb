@@ -33,6 +33,11 @@ class TestCompressed < Minitest::Test
     assert_dir "comments"
   end
 
+  def test_conditional
+    jekyll_build ["_config.yml", "_config_conditional.yml"]
+    assert_dir "conditional"
+  end
+
   def test_profile
     jekyll_build ["_config.yml", "_config_profile.yml"]
     assert_dir "profile"
