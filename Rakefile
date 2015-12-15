@@ -14,13 +14,10 @@ file BUILD_FILE => FileList["src/compress.*", BUILD_DIR] do |bf|
     .gsub(/\s+/, " ")
     .gsub(/\s+(?={)|/, "")
     .gsub(/{% comment %}[^{]+{% endcomment %}/, "")
-    .gsub("_CHARACTER_TABULATION", "\t")
-    .gsub("_LINE_FEED", "\n")
-    .gsub("_SPACE", "\s")
     .strip
 
   File.open bf.name, 'w' do |f|
-    f.puts yaml, "", liquid
+    f.puts yaml, liquid
   end
 end
 

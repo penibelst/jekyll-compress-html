@@ -1,3 +1,5 @@
+{% endcapture %}
+
 {% if site.compress_html.ignore.envs contains jekyll.environment %}
   {{ content }}
 {% else %}
@@ -36,70 +38,6 @@
 {% endif %}
 
 
-{% comment %}Collapse whitespace outside of <pre>{% endcomment %}
-
-{% if site.compress_html.ignore.whitespaces %}
-  {% assign _random = site.time | date: "%s%N" %}
-  {% if site.compress_html.ignore.whitespaces contains "SPACE" %}
-    {% capture _ignore_space %}_SPACE{% endcapture %}
-    {% capture _freeze_space %}space{{ _random }}{% endcapture %}
-    {% capture _join %}_LINE_FEED{% endcapture %}
-  {% else %}
-    {% capture _ignore_space %}{% endcapture %}
-    {% capture _freeze_space %}{% endcapture %}
-    {% capture _join %}_SPACE{% endcapture %}
-  {% endif %}
-  {% if site.compress_html.ignore.whitespaces contains "LINE FEED" %}
-    {% capture _ignore_line_feed %}_LINE_FEED{% endcapture %}
-    {% capture _freeze_line_feed %}line_feed{{ _random }}{% endcapture %}
-  {% else %}
-    {% capture _ignore_line_feed %}{% endcapture %}
-    {% capture _freeze_line_feed %}{% endcapture %}
-  {% endif %}
-  {% if site.compress_html.ignore.whitespaces contains "CHARACTER TABULATION" %}
-    {% capture _ignore_character_tabulation %}_CHARACTER_TABULATION{% endcapture %}
-    {% capture _freeze_character_tabulation %}character_tabulation{{ _random }}{% endcapture %}
-  {% else %}
-    {% capture _ignore_character_tabulation %}{% endcapture %}
-    {% capture _freeze_character_tabulation %}{% endcapture %}
-  {% endif %}
-{% endif %}
-
-{% assign _pre_befores = _content | split: "<pre" %}
-{% assign _content = "" %}
-{% for _pre_before in _pre_befores %}
-  {% assign _pres = _pre_before | split: "</pre>" %}
-
-  {% if _pres.size != 0 %}
-    {% if site.compress_html.ignore.whitespaces %}
-      {% assign _pres_after =  _pres.last
-        | replace: _ignore_space,                _freeze_space
-        | replace: _ignore_line_feed,            _freeze_line_feed
-        | replace: _ignore_character_tabulation, _freeze_character_tabulation
-        | split: "_SPACE"
-        | join: _join
-        | replace: _freeze_character_tabulation, _ignore_character_tabulation
-        | replace: _freeze_line_feed,            _ignore_line_feed
-        | replace: _freeze_space,                _ignore_space
-      %}
-    {% else %}
-      {% assign _pres_after = _pres.last
-        | split: "_SPACE"
-        | join: "_SPACE"
-      %}
-    {% endif %}
-  {% endif %}
-
-  {% capture _content %}
-    {{ _content }}
-    {% if _pre_before contains "</pre>" %}<pre{{ _pres.first }}</pre>{% endif %}
-    {% unless _pre_before contains "</pre>" and _pres.size == 1 %}{{ _pres_after }}{% endunless %}
-  {% endcapture %}
-{% endfor %}
-{% if _profile %}
-  {% assign _profile_collapse = _content | size | plus: 1 %}
-{% endif %}
-
 {% comment %}Remove comments{% endcomment %}
 
 {% if site.compress_html.comments == "all" %}
@@ -113,12 +51,50 @@
     {% assign _comment_content = _comment_before | split: _comments.last | first %}
     {% if _comment_content %}
       {% capture _comment %}{{ _comments.first }}{{ _comment_content }}{{ _comments.last }}{% endcapture %}
-      {% assign _content = _content | remove: _comment %}
+      {% assign _content = _content | remove_first: _comment %}
     {% endif %}
   {% endfor %}
   {% if _profile %}
     {% assign _profile_comments = _content | size | plus: 1 %}
   {% endif %}
+{% endif %}
+
+
+{% comment %}Collapse whitespace outside of <pre>{% endcomment %}
+
+{% assign _pre_befores = _content | split: "<pre" %}
+{% assign _content = "" %}
+{% for _pre_before in _pre_befores %}
+  {% assign _pres = _pre_before | split: "</pre>" %}
+  {% assign _pres_after = "" %}
+
+  {% if _pres.size != 0 %}
+    {% if site.compress_html.blanklines %}
+      {% assign _lines = _pres.last | split: _LINE_FEED %}
+      {% capture _pres_after %}
+        {% for _line in _lines %}
+          {% assign _trimmed = _line | split: " " | join: " " %}
+          {% if _trimmed != empty or forloop.last %}
+            {% unless forloop.first %}
+              {{ _LINE_FEED }}
+            {% endunless %}
+            {{ _line }}
+          {% endif %}
+        {% endfor %}
+      {% endcapture %}
+    {% else %}
+      {% assign _pres_after = _pres.last | split: " " | join: " " %}
+    {% endif %}
+  {% endif %}
+
+  {% capture _content %}
+    {{ _content }}
+    {% if _pre_before contains "</pre>" %}<pre{{ _pres.first }}</pre>{% endif %}
+    {% unless _pre_before contains "</pre>" and _pres.size == 1 %}{{ _pres_after }}{% endunless %}
+  {% endcapture %}
+{% endfor %}
+{% if _profile %}
+  {% assign _profile_collapse = _content | size | plus: 1 %}
 {% endif %}
 
 
@@ -154,11 +130,11 @@
   {% if _profile_startings %}
     <tr> <td>startings <td>{{ _profile_startings }}
   {% endif %}
-  {% if _profile_collapse %}
-    <tr> <td>collapse <td>{{ _profile_collapse }}
-  {% endif %}
   {% if _profile_comments %}
     <tr> <td>comments <td>{{ _profile_comments }}
+  {% endif %}
+  {% if _profile_collapse %}
+    <tr> <td>collapse <td>{{ _profile_collapse }}
   {% endif %}
   {% if _profile_clippings %}
     <tr> <td>clippings <td>{{ _profile_clippings }}

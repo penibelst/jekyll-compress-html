@@ -33,6 +33,11 @@ class TestCompressed < Minitest::Test
     assert_dir "comments"
   end
 
+  def test_conditional
+    jekyll_build ["_config.yml", "_config_conditional.yml"]
+    assert_dir "conditional"
+  end
+
   def test_profile
     jekyll_build ["_config.yml", "_config_profile.yml"]
     assert_dir "profile"
@@ -45,14 +50,14 @@ class TestCompressed < Minitest::Test
     ENV["JEKYLL_ENV"] = nil
   end
 
-  def test_ignore_character_tabulation_space
-    jekyll_build ["_config.yml", "_ignore_character_tabulation_space.yml"]
-    assert_dir "ignore_character_tabulation_space"
-  end
-
   def test_startings
     jekyll_build ["_config.yml", "_startings.yml"]
     assert_dir "startings"
+  end
+
+  def test_blanklines
+    jekyll_build ["_config.yml", "_config_blanklines.yml"]
+    assert_dir "blanklines"
   end
 
   private
