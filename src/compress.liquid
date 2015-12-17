@@ -46,13 +46,27 @@
   {% assign _comments = site.compress_html.comments %}
 {% endif %}
 {% if _comments.size == 2 %}
-  {% assign _comment_befores = _content | split: _comments.first %}
+  {% capture _comment_befores %}.{{ _content }}{% endcapture %}
+  {% assign _comment_befores = _comment_befores | split: _comments.first %}
   {% for _comment_before in _comment_befores %}
-    {% assign _comment_content = _comment_before | split: _comments.last | first %}
-    {% if _comment_content %}
-      {% capture _comment %}{{ _comments.first }}{{ _comment_content }}{{ _comments.last }}{% endcapture %}
-      {% assign _content = _content | remove_first: _comment %}
+    {% if forloop.first %}
+      {% continue %}
     {% endif %}
+    {% capture _comment_outside %}
+      {% if _carry %}{{ _comments.first }}{% endif %}
+      {{ _comment_before }}
+    {% endcapture %}
+    {% capture _comment %}
+      {% unless _carry %}{{ _comments.first }}{% endunless %}
+      {{ _comment_outside | split: _comments.last | first }}
+      {% if _comment_outside contains _comments.last %}
+        {{ _comments.last }}
+        {% assign _carry = false %}
+      {% else %}
+        {% assign _carry = true %}
+      {% endif %}
+    {% endcapture %}
+    {% assign _content = _content | remove_first: _comment %}
   {% endfor %}
   {% if _profile %}
     {% assign _profile_comments = _content | size | plus: 1 %}
