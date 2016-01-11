@@ -85,17 +85,9 @@
   {% if _pres.size != 0 %}
     {% if site.compress_html.blanklines %}
       {% assign _lines = _pres.last | split: _LINE_FEED %}
-      {% assign _lastchar = _pres.last | split: "" | last %}
-      {% assign _outerloop = forloop %}
       {% capture _pres_after %}
         {% for _line in _lines %}
           {% assign _trimmed = _line | split: " " | join: " " %}
-          {% if forloop.last and _lastchar == _LINE_FEED %}
-            {% unless _outerloop.last %}
-              {{ _LINE_FEED }}
-            {% endunless %}
-            {% continue %}
-          {% endif %}
           {% if _trimmed != empty or forloop.last %}
             {% unless forloop.first %}
               {{ _LINE_FEED }}
