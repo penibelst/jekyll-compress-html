@@ -85,24 +85,63 @@
   {% if _pres.size != 0 %}
     {% if site.compress_html.blanklines %}
       {% assign _lines = _pres.last | split: _LINE_FEED %}
-      {% assign _lastchar = _pres.last | split: "" | last %}
-      {% assign _outerloop = forloop %}
+
+      {% comment %}
+        This fancy section here is the only way to slice a string in liquid 2.
+        (At least that I know of)
+        I use this to determine whether the last line of this _pres.last is
+        leading up to the start of a pre (IE indentation) and it seems to be the
+        only way to reliably handle all the potential edge cases.
+      {% endcomment %}
+      {% assign _lastline = _lines.last.size %}
+      {% assign _lastline = _pres.last.size | minus: _lastline %}
+      {% assign _lastline = _pres.last | split: "" | shift: _lastline | join: "" %}
+      {% if _lastline == _lines.last %}
+        {% assign _lastline = true %}
+      {% else %}
+        {% assign _lastline = false %}
+      {% endif %}
+
       {% capture _pres_after %}
-        {% for _line in _lines %}
-          {% assign _trimmed = _line | split: " " | join: " " %}
-          {% if forloop.last and _lastchar == _LINE_FEED %}
-            {% unless _outerloop.last %}
-              {{ _LINE_FEED }}
-            {% endunless %}
-            {% continue %}
+        {% assign _firstchar = _pres.last | split: "" | first %}
+        {% if _firstchar == _LINE_FEED %}
+          {% assign _trimmed = _pres.last | split: " " | join: " " %}
+          {% if _trimmed == empty and forloop.last %}
+            {% assign _trimmed = true %}
+          {% else %}
+            {% assign _trimmed = false %}
           {% endif %}
-          {% if _trimmed != empty or forloop.last %}
-            {% unless forloop.first %}
+          {% unless forloop.first or _trimmed %}
+            {{ _LINE_FEED }}
+          {% endunless %}
+        {% endif %}
+
+        {% assign _outerloop = forloop %}
+        {% assign _firstline = true %}
+        {% for _line in _lines %}
+          {% assign _section_before_pre = false %}
+          {% if _lastline and forloop.last %}
+            {% unless _outerloop.last %}
+              {% assign _section_before_pre = true %}
+            {% endunless %}
+          {% endif %}
+          {% assign _trimmed = _line | split: " " | join: " " %}
+          {% if _trimmed != empty or _section_before_pre %}
+            {% unless _firstline %}
               {{ _LINE_FEED }}
             {% endunless %}
+            {% assign _firstline = false %}
             {{ _line }}
           {% endif %}
         {% endfor %}
+
+        {% assign _lastchar = _pres.last | split: "" | last %}
+        {% if _lastchar == _LINE_FEED %}
+          {% assign _trimmed = _pres.last | split: " " | join: " " %}
+          {% unless forloop.last or _trimmed == empty %}
+            {{ _LINE_FEED }}
+          {% endunless %}
+        {% endif %}
       {% endcapture %}
     {% else %}
       {% assign _pres_after = _pres.last | split: " " | join: " " %}
