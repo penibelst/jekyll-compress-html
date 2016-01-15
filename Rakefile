@@ -29,7 +29,11 @@ end
 task :performance => BUILD_FILE do
   require "benchmark"
   Dir.chdir "performance" do
-    puts Benchmark.measure { sh "bundle exec jekyll build" }
+    buildtimes = [
+      "Build:\t\t" + Benchmark.measure { sh "bundle exec jekyll build" }.to_s,
+      "Blanklines:\t" + Benchmark.measure { sh "bundle exec jekyll build --config _config_blanklines.yml" }.to_s
+    ]
+    puts buildtimes
   end
 end
 
