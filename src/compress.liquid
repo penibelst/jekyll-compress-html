@@ -8,7 +8,24 @@
 {% comment %}Initialization{% endcomment %}
 
 {% capture _content %}{{ content }}{% endcapture %}
-{% assign _profile = site.compress_html.profile %}
+
+{% comment %}
+  Just run the profile is activated by compress_html.profile parameter,
+   But if enabled compress_html.only_local_profile parameter,
+   just run the profile on the server addressed
+   by localhost ip or equivalent
+{% endcomment %}
+{% if site.compress_html.profile %}
+   {% if site.compress_html.only_local_profile %}
+      {% if site.url contains '://localhost' or site.url contains '://127.0.0.1' or site.url contains '://::1' %}
+         {% assign _profile = true %}
+      {% else %}
+        {% assign _profile = false %}
+      {% endif %}
+    {% else %}
+      {% assign _profile = true %}
+   {% endif %}
+{% endif %}
 
 
 {% comment %}Remove end tags{% endcomment %}
