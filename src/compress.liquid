@@ -1,6 +1,6 @@
 {% endcapture %}
 
-{% if site.compress_html.ignore.envs contains jekyll.environment %}
+{% if site.compress_html.ignore.envs contains jekyll.environment or site.compress_html.ignore.envs == "all" %}
   {{ content }}
 {% else %}
 

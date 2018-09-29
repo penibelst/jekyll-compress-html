@@ -50,6 +50,13 @@ class TestCompressed < Minitest::Test
     ENV["JEKYLL_ENV"] = nil
   end
 
+  def test_ignore_all
+    ENV["JEKYLL_ENV"] = "production"
+    jekyll_build ["_config.yml", "_config_ignore_all.yml"]
+    assert_dir "ignore"
+    ENV["JEKYLL_ENV"] = nil
+  end
+
   def test_startings
     jekyll_build ["_config.yml", "_startings.yml"]
     assert_dir "startings"
