@@ -141,6 +141,8 @@ This page itself is compressed in profile mode for educational purposes only. Th
 
 An array of environments given by `ENV["JEKYLL_ENV"]` where the compress layout is ignored. This may be useful while developing a website.
 
+Use the shortcut `all` to disable compression in all environments.
+
 ### blanklines
 
 A boolean value to turn on blanklines mode. This mode will only remove lines consisting of whitespace and leave other lines alone.
