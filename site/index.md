@@ -193,6 +193,7 @@ Take a look at project’s `test/source` and `test/expected` directories. They c
 * _[I am a Jekyll God][braithwaite-review]_ by Garth Braithwaite
 * _[Compressing HTML in Jekyll without a plugin][knight-review]_ by Rich Knight
 * _[Generating my static site with Jekyll and GitHub Pages][thorne-review]_ by Michael Thorne
+* _[99/100 Google Page Speed Score][steinbach-review]_ by James Steinbach
 
 ----
 
@@ -213,3 +214,4 @@ Take a look at project’s `test/source` and `test/expected` directories. They c
 [knight-review]: http://rich-knight.com/articles/compressing-html-in-jekyll/
 [braithwaite-review]: http://garthdb.com/writings/i-am-a-jekyll-god/
 [thorne-review]: http://www.userx.co.za/journal/generating-my-static-site-with-jekyll-and-github-pages/
+[steinbach-review]: https://jdsteinbach.com/performance/99-100-google-page-speed/
