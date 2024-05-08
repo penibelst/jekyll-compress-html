@@ -195,21 +195,21 @@ Take a look at project’s `test/source` and `test/expected` directories. They c
 
 ----
 
-© 2014–{{ site.time | date: "%Y" }} [Anatol Broder](http://anatol.penibelst.de/). Released under the MIT License.
+© 2014–{{ site.time | date: "%Y" }} Anatol Broder. Released under the MIT License.
 
-[jekyll]: http://jekyllrb.com/
+[jekyll]: https://jekyllrb.com/
 [html-spec]: https://html.spec.whatwg.org/multipage/
 [html-semantics]: https://html.spec.whatwg.org/multipage/semantics.html
 [html-syntax]: https://html.spec.whatwg.org/multipage/syntax.html
 [html-tabular]: https://html.spec.whatwg.org/multipage/tables.html
-[liquid]: http://docs.shopify.com/themes/liquid-documentation/basics
+[liquid]: https://docs.shopify.com/themes/liquid-documentation/basics
 [github-repo]: https://github.com/penibelst/jekyll-compress-html
 [github-repo-latest]: https://github.com/penibelst/jekyll-compress-html/releases/latest
 [github-repo-gh-pages]: https://github.com/penibelst/jekyll-compress-html/tree/gh-pages
 [github-search]: https://github.com/search?l=html&o=desc&q=filename%3Acompress.html+penibelst+compress_html&s=indexed&type=Code
-[cond]: http://msdn.microsoft.com/en-us/library/ms537512.aspx
-[hutchison-review]: http://www.devwithimagination.com/2014/06/12/jekyll-compress-a-pure-liquid-way-to-compress-html/
-[knight-review]: http://rich-knight.com/articles/compressing-html-in-jekyll/
-[braithwaite-review]: http://garthdb.com/writings/i-am-a-jekyll-god/
-[thorne-review]: http://www.userx.co.za/journal/generating-my-static-site-with-jekyll-and-github-pages/
+[cond]: https://msdn.microsoft.com/en-us/library/ms537512.aspx
+[hutchison-review]: https://www.devwithimagination.com/2014/06/12/jekyll-compress-a-pure-liquid-way-to-compress-html/
+[knight-review]: https://rich-knight.com/articles/compressing-html-in-jekyll/
+[braithwaite-review]: https://garthdb.com/writings/i-am-a-jekyll-god/
+[thorne-review]: https://www.userx.co.za/journal/generating-my-static-site-with-jekyll-and-github-pages/
 [steinbach-review]: https://jdsteinbach.com/performance/99-100-google-page-speed/
