@@ -65,8 +65,8 @@ namespace :site do
   end
 
   task :proof => :build do
-    require 'html/proofer'
-    HTML::Proofer.new("./site/_site", {
+    require 'html-proofer'
+    HTMLProofer.check_directory("./site/_site", {
       :verbose => true,
       :typhoeus => {
         :ssl_verifypeer => false,

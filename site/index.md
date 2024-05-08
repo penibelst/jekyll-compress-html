@@ -181,8 +181,6 @@ Look how [others use][github-search] the layout on GitHub too.
 
 ## Development
 
-[![Build Status](https://api.travis-ci.org/penibelst/jekyll-compress-html.svg?branch=master){: .status }](https://travis-ci.org/penibelst/jekyll-compress-html)
-
 Feel free to submit bugs, patches, and questions in the [repository][github-repo].
 
 Take a look at project’s `test/source` and `test/expected` directories. They contain self-explanatory specifications. Run `rake` to test the layout.

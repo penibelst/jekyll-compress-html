@@ -1,0 +1,49 @@
+name: Tests
+on: [push, pull_request]
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - jekyll: '2.0'
+            ruby: '2.6'
+          - jekyll: '2.1'
+            ruby: '2.6'
+          - jekyll: '3.0'
+            ruby: '3.3'
+            env:
+              USE_KRAMDOWN: 1
+          - jekyll: '4.0'
+            ruby: '3.3'
+            savebuild: true
+            env:
+              USE_KRAMDOWN: 1
+    name: 'Jekyll ${{ matrix.jekyll }} on ruby ${{ matrix.ruby }}'
+    env:
+      JEKYLL_VERSION: ${{ matrix.jekyll }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - run: bundle install
+      - run: bundle exec rake test
+      - uses: actions/upload-artifact@v4
+        with:
+          name: compress.html
+          path: _build/compress.html
+        if: ${{ matrix.savebuild }}
+  site:
+    runs-on: ubuntu-latest
+    name: 'Build site'
+    needs:
+      - tests
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ruby
+      - run: bundle install
+      - run: bundle exec rake site:test
