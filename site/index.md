@@ -36,6 +36,16 @@ layout: compress
 
 Now all your markup will be processed by the `compress` layout.
 
+You can disable compression on a page-by-page basis with the `compress_html` frontmatter. For example:
+
+```html
+---
+compress_html: false
+---
+
+This page will not be compressed
+```
+
 ## Configuration
 
 By default the layout replaces contiguous whitespace with a single whitespace character. Additional settings can be specified in the `compress_html` key inside the `_config.yml` file. The default configuration is:
