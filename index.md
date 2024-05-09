@@ -36,6 +36,16 @@ layout: compress
 
 Now all your markup will be processed by the `compress` layout.
 
+You can disable compression on a page-by-page basis with the `compress_html` frontmatter. For example:
+
+```html
+---
+compress_html: false
+---
+
+This page will not be compressed
+```
+
 ## Configuration
 
 By default the layout replaces contiguous whitespace with a single whitespace character. Additional settings can be specified in the `compress_html` key inside the `_config.yml` file. The default configuration is:
@@ -141,6 +151,8 @@ This page itself is compressed in profile mode for educational purposes only. Th
 
 An array of environments given by `ENV["JEKYLL_ENV"]` where the compress layout is ignored. This may be useful while developing a website.
 
+Use the shortcut `all` to disable compression in all environments.
+
 ### blanklines
 
 A boolean value to turn on blanklines mode. This mode will only remove lines consisting of whitespace and leave other lines alone.
@@ -179,8 +191,6 @@ Look how [others use][github-search] the layout on GitHub too.
 
 ## Development
 
-[![Build Status](https://api.travis-ci.org/penibelst/jekyll-compress-html.svg?branch=master){: .status }](https://travis-ci.org/penibelst/jekyll-compress-html)
-
 Feel free to submit bugs, patches, and questions in the [repository][github-repo].
 
 Take a look at project’s `test/source` and `test/expected` directories. They contain self-explanatory specifications. Run `rake` to test the layout.
@@ -191,23 +201,25 @@ Take a look at project’s `test/source` and `test/expected` directories. They c
 * _[I am a Jekyll God][braithwaite-review]_ by Garth Braithwaite
 * _[Compressing HTML in Jekyll without a plugin][knight-review]_ by Rich Knight
 * _[Generating my static site with Jekyll and GitHub Pages][thorne-review]_ by Michael Thorne
+* _[99/100 Google Page Speed Score][steinbach-review]_ by James Steinbach
 
 ----
 
-© 2014–{{ site.time | date: "%Y" }} [Anatol Broder](http://anatol.penibelst.de/). Released under the MIT License.
+© 2014–{{ site.time | date: "%Y" }} Anatol Broder. Released under the MIT License.
 
-[jekyll]: http://jekyllrb.com/
+[jekyll]: https://jekyllrb.com/
 [html-spec]: https://html.spec.whatwg.org/multipage/
 [html-semantics]: https://html.spec.whatwg.org/multipage/semantics.html
 [html-syntax]: https://html.spec.whatwg.org/multipage/syntax.html
 [html-tabular]: https://html.spec.whatwg.org/multipage/tables.html
-[liquid]: http://docs.shopify.com/themes/liquid-documentation/basics
+[liquid]: https://docs.shopify.com/themes/liquid-documentation/basics
 [github-repo]: https://github.com/penibelst/jekyll-compress-html
 [github-repo-latest]: https://github.com/penibelst/jekyll-compress-html/releases/latest
 [github-repo-gh-pages]: https://github.com/penibelst/jekyll-compress-html/tree/gh-pages
 [github-search]: https://github.com/search?l=html&o=desc&q=filename%3Acompress.html+penibelst+compress_html&s=indexed&type=Code
-[cond]: http://msdn.microsoft.com/en-us/library/ms537512.aspx
-[hutchison-review]: http://www.devwithimagination.com/2014/06/12/jekyll-compress-a-pure-liquid-way-to-compress-html/
-[knight-review]: http://rich-knight.com/articles/compressing-html-in-jekyll/
-[braithwaite-review]: http://garthdb.com/writings/i-am-a-jekyll-god/
-[thorne-review]: http://www.userx.co.za/journal/generating-my-static-site-with-jekyll-and-github-pages/
+[cond]: https://msdn.microsoft.com/en-us/library/ms537512.aspx
+[hutchison-review]: https://www.devwithimagination.com/2014/06/12/jekyll-compress-a-pure-liquid-way-to-compress-html/
+[knight-review]: https://rich-knight.com/articles/compressing-html-in-jekyll/
+[braithwaite-review]: https://garthdb.com/writings/i-am-a-jekyll-god/
+[thorne-review]: https://www.userx.co.za/journal/generating-my-static-site-with-jekyll-and-github-pages/
+[steinbach-review]: https://jdsteinbach.com/performance/99-100-google-page-speed/
